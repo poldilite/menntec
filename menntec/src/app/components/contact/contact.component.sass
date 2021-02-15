@@ -1,0 +1,55 @@
+
+@import './../../../assets/sass/var'
+@import './../../../assets/sass/mixins'
+
+.contact
+
+  &__container
+    padding: 5rem 0
+
+  &__title
+    margin: 0
+
+  &__description
+    padding: 0 8rem
+
+    p
+      line-height: normal
+      margin: 1rem 0
+
+  &__form
+    padding-top: 5.375rem
+
+  & input,
+  & textarea
+    padding: 1.25rem
+    border: 0
+    margin-bottom: 2.1875rem
+    outline: 0
+    font-size: 1.625rem
+    width: 100%
+    border-radius: 3px
+    background-clip: padding-box
+    transition: 300ms
+    color: $clr-primary
+    background: $clr-footer-dark
+
+    &::placeholder
+      text-align: center
+      font-weight: $fw-bold
+
+  & textarea
+    min-height: 10.5rem
+    resize: none
+    position: relative
+    overflow: auto
+
+    &:focus
+      outline: none
+
+    &::placeholder
+      line-height: 12rem
+
+  & button,
+  & input
+    overflow: hidden

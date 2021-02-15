@@ -14,6 +14,7 @@ import { ImprintComponent } from './pages/imprint/imprint.component';
 import { DatasecComponent } from './pages/datasec/datasec.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { QuoteComponent } from './components/quote/quote.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,10 @@ import { QuoteComponent } from './components/quote/quote.component';
     ImprintComponent,
     DatasecComponent,
     ProductCardComponent,
-    QuoteComponent
+    QuoteComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

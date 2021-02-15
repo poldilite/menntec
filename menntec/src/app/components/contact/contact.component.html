@@ -1,1 +1,71 @@
-<p>contact works!</p>
+<section class="contact dark_bg txt-lght center">
+  <div class="contact__container inner bold">
+    <h2 class="contact__title">Kontaktieren Sie uns...</h2>
+    <div class="contact__description">
+      <p class="contact__text">
+        Wondering if we can help, but not ready for a chat? Just drop us a line
+        in the form bellow we'll get back to you.
+      </p>
+    </div>
+
+    <div class="contact__form">
+      <form
+        (ngSubmit)="onSubmit()"
+        #form="ngForm"
+        #contForm="ngForm"
+        novalidate
+      >
+        <div class="inputField">
+          <input
+            type="text"
+            name="fullName"
+            class="contact__form__input"
+            placeholder="Vor- und Nachname eingeben"
+            [(ngModel)]="contactData.fullName"
+            #fullNameInput="ngModel"
+            required
+          />
+          <div
+            class="is-error"
+            *ngIf="fullNameInput.invalid && fullNameInput.touched"
+          >
+            Bitte geben Sie einen Namen ein
+          </div>
+        </div>
+        <div class="inputField">
+          <input
+            type="email"
+            name="eMail"
+            class="contact__form__input"
+            placeholder="eMail-Adresse eingeben"
+            [(ngModel)]="contactData.eMail"
+            #eMailInput="ngModel"
+            required
+          />
+          <div
+            class="is-error"
+            *ngIf="eMailInput.invalid && eMailInput.touched"
+          >
+            Bitte geben Sie eine gültige eMail-Adresse ein
+          </div>
+        </div>
+        <div class="inputField">
+          <textarea
+            name="message"
+            placeholder="Ihre Nachricht"
+            class="contact__form__input text"
+            [(ngModel)]="contactData.message"
+            #messageInput="ngModel"
+            required
+          ></textarea>
+          <div
+            class="is-error"
+            *ngIf="messageInput.invalid && messageInput.touched"
+          >
+            Bitte geben Sie eine Nachricht ein
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
