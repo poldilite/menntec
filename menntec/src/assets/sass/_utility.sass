@@ -18,6 +18,11 @@
   margin-right: 1rem
   font-size: .875rem
 
+/** Elements **/
+
+.accent_bg
+  background: $clr-accent
+
 .center_center
   align-items: center
   justify-content: center
@@ -25,11 +30,45 @@
 .flex
   display: flex
 
+.content-container
+  min-height: 100vh
+
+.inner
+  width: 95%
+  margin: 0 auto
+  max-width: 78rem
+  position: relative
+
+  &::after
+    clear: both
+
+  &::before,
+  &::after
+    content: ''
+    display: table
+
+/** Text **/
+
+.txt-lght
+  color: $clr-primary
+
+.ultralight
+  font-weight: $fw-ultralight
+
+.light
+  font-weight: $fw-light
+
+.regular
+  font-weight: $fw-normal
+
+.semibold
+  font-weight: $fw-semibold
+
+.bold
+  font-weight: $fw-bold
+
 .col-text
-  color: $clr-txt-accent
+  color: $clr-accent
 
 .not-col-text
   color: $clr-txt
-
-.content-container
-  min-height: 100vh

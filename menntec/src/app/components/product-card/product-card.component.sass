@@ -1,0 +1,54 @@
+
+@import './../../../assets/sass/var'
+@import './../../../assets/sass/mixins'
+
+.product__card
+  height: 17rem
+  background: $clr-primary
+  overflow: hidden
+  margin-bottom: 3.75rem
+  display: block
+
+  @include for-size(tablet-portrait-up)
+    height: 22rem
+
+  @include for-size(tablet-landscape-up)
+    height: 30rem
+
+  &__inner
+    height: 100%
+    margin: 0
+    position: relative
+    display: flex
+
+  &__content
+    padding: 2rem 1.25rem
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    flex: 0 0 33.333%
+    max-width: 33.333%
+    position: relative
+
+  &__image
+    padding-right: 0
+    flex: 0 0 66.666%
+    max-width: 66.666%
+    padding-left: .625rem
+    position: relative
+
+    & img
+      position: absolute
+      top: 0
+      right: 0
+      left: 0
+      bottom: 0
+      height: 100%
+      width: 100%
+      object-fit: cover
+
+.card-title
+  font-size: .625rem
+
+.card-description
+  font-size: 1.125rem
