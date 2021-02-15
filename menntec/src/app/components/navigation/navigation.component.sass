@@ -1,0 +1,48 @@
+
+@import './../../../assets/sass/var'
+@import './../../../assets/sass/mixins'
+
+.header-background
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+
+.header__wrapper
+  margin-left: auto
+  margin-right: auto
+  padding: 1.5rem 2.5vw
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.hamburger-menu
+  display: flex
+
+.menu
+  height: 1.25rem
+  width: 1.875rem
+  background: none
+  border: 0
+  cursor: pointer
+  position: relative
+
+  &__line
+    background: $clr-menu
+    height: 0.25rem
+    position: absolute
+    right: 0
+    border-radius: 6.25rem
+    background-clip: padding-box
+
+    &:first-child
+      width: 1.56rem
+      top: 0
+
+    &:nth-child(2)
+      width: 1.875rem
+      top: .5rem
+
+    &:last-child
+      width: 0.9375rem
+      top: 1rem

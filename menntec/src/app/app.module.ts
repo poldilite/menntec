@@ -12,6 +12,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
 import { DatasecComponent } from './pages/datasec/datasec.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DatasecComponent } from './pages/datasec/datasec.component';
     ContactComponent,
     AboutComponent,
     ImprintComponent,
-    DatasecComponent
+    DatasecComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
