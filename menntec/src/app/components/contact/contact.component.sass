@@ -36,7 +36,7 @@
 
     &::placeholder
       text-align: center
-      font-weight: $fw-bold
+      font-weight: $fw-black
 
   & textarea
     min-height: 10.5rem
@@ -44,11 +44,15 @@
     position: relative
     overflow: auto
 
+    @include for-size(desktop-up)
+      padding: 1.875rem 1.25rem
+
     &:focus
       outline: none
 
     &::placeholder
-      line-height: 12rem
+      line-height: 6rem
+      font-weight: $fw-bold
 
   & button,
   & input
