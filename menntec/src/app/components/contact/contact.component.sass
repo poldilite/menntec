@@ -5,38 +5,50 @@
 .contact
 
   &__container
-    padding: 5rem 0
+    padding: 3.25rem 1.3rem
+
+    @include for-size(tablet-portrait-up)
+      padding: 5rem 0
 
   &__title
     margin: 0
 
   &__description
-    padding: 0 8rem
+    font-size: .75rem
+
+    @include for-size(tablet-portrait-up)
+      padding: 0 8rem
 
     p
       line-height: normal
       margin: 1rem 0
 
   &__form
-    padding-top: 5.375rem
+    padding-top: 3.9rem
+
+    @include for-size(tablet-portrait-up)
+      padding-top: 5.375rem
 
   & input,
   & textarea
-    padding: 1.25rem
+    font-size: 1.2rem
     border: 0
-    margin-bottom: 2.1875rem
     outline: 0
-    font-size: 1.625rem
     width: 100%
     border-radius: 3px
     background-clip: padding-box
     transition: 300ms
     color: $clr-primary
     background: $clr-footer-dark
+    margin-bottom: 2.1875rem
+    padding: 1.25rem
 
     &::placeholder
       text-align: center
       font-weight: $fw-black
+
+    @include for-size(tablet-portrait-up)
+      font-size: 1.625rem
 
   & textarea
     min-height: 10.5rem

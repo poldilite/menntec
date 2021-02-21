@@ -11,10 +11,13 @@
 .header__wrapper
   margin-left: auto
   margin-right: auto
-  padding: 1.5rem 2.5vw
+  padding: 1.5rem 5.5vw
   display: flex
   justify-content: space-between
   align-items: center
+
+  @include for-size(tablet-portrait-up)
+    padding: 1.5rem 2.5vw
 
 .hamburger-menu
   display: flex

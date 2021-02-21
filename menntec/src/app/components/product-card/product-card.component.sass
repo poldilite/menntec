@@ -3,14 +3,15 @@
 @import './../../../assets/sass/mixins'
 
 .product__card
-  height: 17rem
+  height: 29rem
+  margin-bottom: 0
   background: $clr-primary
   overflow: hidden
-  margin-bottom: 3.75rem
   display: block
 
   @include for-size(tablet-portrait-up)
-    height: 22rem
+    height: 17rem
+    margin-bottom: 3.75rem
 
   @include for-size(tablet-landscape-up)
     height: 30rem
@@ -20,27 +21,39 @@
     margin: 0
     position: relative
     display: flex
+    flex-wrap: wrap
+    flex-direction: row
+
+    @include for-size(tablet-portrait-up)
 
   &__content
-    padding: 2rem 1.25rem
+    padding: 3.25rem 1.625rem
+    height: 50%
     display: flex
-    flex-direction: column
     flex-wrap: wrap
-    flex: 0 0 33.333%
-    max-width: 33.333%
+    flex-direction: row
+    flex: 0 0 100%
+    max-width: 100%
     position: relative
 
-    &--odd
-      order: 1
+    @include for-size(tablet-portrait-up)
+      padding: 2rem 1.25rem
+      flex: 0 0 33.333%
+      max-width: 33.333%
+      height: 100%
+      flex-direction: column
 
-    &--even
-      order: 0
+      &--odd
+        order: 1
+
+      &--even
+        order: 0
 
   &__image
-    padding-right: 0
-    flex: 0 0 66.666%
-    max-width: 66.666%
-    padding-left: .625rem
+    padding: 0
+    height: 50%
+    flex: 0 0 100%
+    max-width: 100%
     position: relative
 
     & img
@@ -53,8 +66,23 @@
       width: 100%
       object-fit: cover
 
+    @include for-size(tablet-portrait-up)
+      padding-right: 0
+      flex: 0 0 66.666%
+      max-width: 66.666%
+      padding-left: .625rem
+      height: 100%
+
 .card-title
-  font-size: .625rem
+  font-size: 1.125rem
+  line-height: normal
+
+  @include for-size(tablet-portrait-up)
+    font-size: .85rem
 
 .card-description
-  font-size: 1.125rem
+  font-size: 1.325rem
+  margin: 0
+
+  @include for-size(tablet-portrait-up)
+    font-size: 1.125rem

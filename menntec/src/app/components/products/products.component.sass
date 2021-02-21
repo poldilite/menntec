@@ -3,5 +3,10 @@
 @import './../../../assets/sass/mixins'
 
 .product
-  background: $clr-secondary
-  padding: 3rem 0
+  padding: 0
+  display: block
+
+@include for-size(tablet-portrait-up)
+  .product
+    background: $clr-secondary
+    padding: 3rem 0

@@ -15,6 +15,8 @@ import { DatasecComponent } from './pages/datasec/datasec.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { FormsModule } from '@angular/forms';
+import { CtaComponent } from './components/cta/cta.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,9 @@ import { FormsModule } from '@angular/forms';
     DatasecComponent,
     ProductCardComponent,
     QuoteComponent,
+    CtaComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
