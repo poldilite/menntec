@@ -27,11 +27,19 @@ export class ProductCardComponent implements OnInit {
     },
     {
       id: 3,
-      title: 'Klima',
+      title: 'Klima- & Kälteanlagen',
       description:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, aliquid!',
       image:
         'https://images.pexels.com/photos/3964692/pexels-photo-3964692.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    },
+    {
+      id: 4,
+      title: 'Lüftung',
+      description:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, aliquid!',
+      image:
+        'https://cdn.pixabay.com/photo/2015/10/03/18/47/industry-970151_1280.jpg',
     },
   ];
 
