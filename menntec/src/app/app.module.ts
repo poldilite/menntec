@@ -17,6 +17,40 @@ import { QuoteComponent } from './components/quote/quote.component';
 import { FormsModule } from '@angular/forms';
 import { CtaComponent } from './components/cta/cta.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  NgcCookieConsentModule,
+  NgcCookieConsentConfig,
+} from 'ngx-cookieconsent';
+
+const cookieConfig: NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'menntec.de',
+  },
+  position: 'bottom-right',
+  theme: 'classic',
+  palette: {
+    popup: {
+      background: '#000000',
+      text: '#ffffff',
+      link: '#ffffff',
+    },
+    button: {
+      background: '#E95814',
+      text: '#000000',
+      border: 'transparent',
+    },
+  },
+  type: 'info',
+  content: {
+    message:
+      'Diese Seite verwendet Cookies. Durch die weitere Nutzung der Website stimmen Sie der Verwendung zu.',
+    dismiss: 'Alles klar',
+    deny: 'Refuse cookies',
+    link: 'Weitere Infos',
+    href: 'https://cookiesandyou.com',
+    policy: 'Cookie Policy',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -34,7 +68,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     QuoteComponent,
     CtaComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    FontAwesomeModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
