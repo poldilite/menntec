@@ -59,6 +59,25 @@
       @include for-size(tablet-portrait-up)
         font-size: .9rem
 
+    &__social
+      color: $clr-accent
+      margin-top: 1.2rem
+
+      & a
+        color: $clr-accent
+
+        & fa-icon
+          background: $clr-primary
+          padding: .4rem .7rem
+          margin-right: .35rem
+          border-radius: .35rem
+          font-size: 1.3rem
+          transition: all 250ms ease-in-out
+
+        &:hover
+          & fa-icon
+            background: transparentize($clr-primary,.1 )
+
     &__image
       width: 100%
       position: absolute

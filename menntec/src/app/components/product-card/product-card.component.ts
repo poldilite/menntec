@@ -13,26 +13,26 @@ export class ProductCardComponent implements OnInit {
       id: 1,
       title: 'Heizung',
       description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, aliquid!',
+        'Ob Neuinstallation, Modernisierung oder Wartung, mit unserem Know-How helfen wir Ihnen bei jedem Projekt.',
       image:
-        'https://images.pexels.com/photos/4819052/pexels-photo-4819052.jpeg?cs=srgb&dl=pexels-erik-mclean-4819052.jpg&fm=jpg',
+        'https://images.pexels.com/photos/6045338/pexels-photo-6045338.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     },
     {
       id: 2,
       title: 'Sanitär',
       description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, aliquid!',
+        'Im Sanitärbereich unterstützen wir Sie gerne bei ihrem Neu- oder Umbau.',
       image:
         'https://images.pexels.com/photos/6238609/pexels-photo-6238609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     },
     {
       id: 3,
-      title: 'Klima- & Kälteanlagen',
+      title: 'Kälte, Klima & Lüftung',
       description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, aliquid!',
+        'Installation und Modernisierung von Lüftungs- und Klimaanlagen auf die gestiegenen Ansprüche.',
       image:
         'https://images.pexels.com/photos/3964692/pexels-photo-3964692.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    },
+    } /*
     {
       id: 4,
       title: 'Lüftung',
@@ -40,7 +40,7 @@ export class ProductCardComponent implements OnInit {
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, aliquid!',
       image:
         'https://cdn.pixabay.com/photo/2015/10/03/18/47/industry-970151_1280.jpg',
-    },
+    }, */,
   ];
 
   ngOnInit(): void {}
