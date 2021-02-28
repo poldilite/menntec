@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'menntec';
+  title = 'MennTec';
 
   // tslint:disable-next-line: new-parens
   private popupOpenSubscription: Subscription = new Subscription();
