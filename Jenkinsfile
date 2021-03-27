@@ -54,7 +54,7 @@ pipeline {
                       failOnError: false,
                       masterNodeName: '',
                       paramPublish: null,
-                      publishers: [[configName: 'menntec_stage', transfers: [[asciiMode: false, cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'dist/menntec', sourceFiles: 'menntec/dist/*,menntec/dist/**/*']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false]]
+                      publishers: [[configName: 'menntec_stage', transfers: [[asciiMode: false, cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'menntec/dist/menntec', sourceFiles: 'menntec/dist/*,menntec/dist/**/*']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false]]
 
       }
     }
