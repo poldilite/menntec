@@ -20,12 +20,6 @@ pipeline {
     }
 
     stage('Build Menntec Application') {
-      when {
-        expression {
-          GIT_BRANCH == 'origin/stage' //&& CODE_CHANGES == true
-        }
-      }
-
       steps {
         script {
             if (GIT_BRANCH == 'origin/stage'){
