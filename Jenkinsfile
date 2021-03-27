@@ -61,6 +61,9 @@ pipeline {
   }
 
   post {
+    always {
+      cleanWs()
+    }
     success {
       echo 'I succeeded!'
     }
