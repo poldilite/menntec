@@ -11,10 +11,16 @@ pipeline {
           GIT_BRANCH != 'origin/dev' //&& CODE_CHANGES == true
         }
       }
+<<<<<<< HEAD
 
       steps {
         echo "Node modules for ${GIT_BRANCH} getting installed"
         sh 'cd menntec'
+=======
+      
+      steps {
+        echo "Node modules for ${GIT_BRANCH} getting installed"
+>>>>>>> 75b240f270087933793de34154a0e38b2f0114cd
         sh 'npm install'
         sh 'npm audit fix'
       }
@@ -25,7 +31,10 @@ pipeline {
         script {
             if (GIT_BRANCH == 'origin/stage'){
                 echo 'Stage Branch'
+<<<<<<< HEAD
                 sh 'ls'
+=======
+>>>>>>> 75b240f270087933793de34154a0e38b2f0114cd
                 sh 'npm run build'
             }
             else if (GIT_BRANCH == 'origin/dev'){
