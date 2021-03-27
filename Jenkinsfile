@@ -16,6 +16,8 @@ pipeline {
         echo "Node modules for ${GIT_BRANCH} getting installed"
         sh 'cd menntec'
         sh 'ls'
+        sh 'cd menntec'
+        sh 'ls'
 /*         sh 'npm install'
         sh 'npm audit fix' */
       }
