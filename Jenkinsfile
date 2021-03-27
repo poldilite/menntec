@@ -27,18 +27,18 @@ pipeline {
       }
 
       steps {
-        echo 'Stage Branch'
-        //sh 'npm run build --prod'
-      }
-
-      when {
-        expression {
-          GIT_BRANCH == 'origin/Dev' //&& CODE_CHANGES == true
+        script {
+            if (GIT_BRANCH == 'origin/stage'){
+                echo 'Stage Branch'
+            }
+            else if (foo == 'origin/dev'){
+                echo 'Dev Branch' 
+            }
+            else {
+                echo 'Main Branch'
+            }
         }
-      }
-
-      steps {
-        echo 'Dev Branch'
+        
         //sh 'npm run build --prod'
       }
     }
