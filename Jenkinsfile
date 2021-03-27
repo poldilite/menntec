@@ -15,6 +15,9 @@ pipeline {
       steps {
         echo "Node modules for ${GIT_BRANCH} getting installed"
 
+        sh 'npm install'
+        sh 'npm audit fix'
+
         dir('menntec') {
           sh 'npm install'
           sh 'npm audit fix'
