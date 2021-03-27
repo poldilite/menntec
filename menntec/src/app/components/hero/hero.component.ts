@@ -33,11 +33,12 @@ export class HeroComponent implements OnInit {
         this.loading = result.loading;
         this.errors = result.errors;
 
-        this.heroTextSpan = this.data.homepage.heroText.slice(0, 32); //TODO: Berechnung anpassen
+        this.heroTextSpan = this.data.homepage.heroText.slice(0, 32); // TODO: Berechnung anpassen
         this.heroTextNormal = this.data.homepage.heroText.slice(33, 99);
       });
   }
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {
     this.hpQuery.unsubscribe();
   }
