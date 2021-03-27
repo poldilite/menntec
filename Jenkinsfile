@@ -25,7 +25,7 @@ pipeline {
             if (GIT_BRANCH == 'origin/stage'){
                 echo 'Stage Branch'
             }
-            else if (foo == 'origin/dev'){
+            else if (GIT_BRANCH == 'origin/dev'){
                 echo 'Dev Branch' 
             }
             else {
