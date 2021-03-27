@@ -8,10 +8,10 @@ pipeline {
 
       when {
         expression {
-          GIT_BRANCH == 'origin/stage' //&& CODE_CHANGES == true
+          GIT_BRANCH != 'origin/dev' //&& CODE_CHANGES == true
         }
       }
-
+      
       steps {
         echo "Node modules for ${GIT_BRANCH} getting installed"
         sh 'npm install'
@@ -24,16 +24,17 @@ pipeline {
         script {
             if (GIT_BRANCH == 'origin/stage'){
                 echo 'Stage Branch'
+                sh 'npm run build'
             }
             else if (GIT_BRANCH == 'origin/dev'){
                 echo 'Dev Branch' 
             }
             else {
-                echo 'Main Branch'
+                echo 'Production Build'
+                sh 'npm run build --prod'
+                
             }
         }
-        
-        //sh 'npm run build --prod'
       }
     }
 
