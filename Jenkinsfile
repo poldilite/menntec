@@ -16,30 +16,31 @@ pipeline {
         echo "Node modules for ${GIT_BRANCH} getting installed"
 
         dir('menntec') {
-          sh 'ls'
+          sh 'npm install'
+          sh 'npm audit fix'
         }
-/*         sh 'npm install'
-        sh 'npm audit fix' */
       }
     }
 
     stage('Build Menntec Application') {
       steps {
-        script {
-            if (GIT_BRANCH == 'origin/stage'){
-                echo 'Stage Branch'
-                sh 'ls'
-                sh 'npm run build'
-            }
-            else if (GIT_BRANCH == 'origin/dev'){
-                echo 'Dev Branch' 
-            }
-            else {
-                echo 'Production Build'
-                sh 'npm run build --prod'
-                
-            }
-        }
+
+        dir('menntec') {
+          script {
+              if (GIT_BRANCH == 'origin/stage'){
+                  echo 'Stage Branch'
+                  sh 'npm run build'
+              }
+              else if (GIT_BRANCH == 'origin/dev'){
+                  echo 'Dev Branch' 
+              }
+              else {
+                  echo 'Production Build'
+                  sh 'npm run build --prod'
+              }
+          }
+        }        
+        
       }
     }
 
