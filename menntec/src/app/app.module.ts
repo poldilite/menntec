@@ -21,6 +21,8 @@ import {
   NgcCookieConsentModule,
   NgcCookieConsentConfig,
 } from 'ngx-cookieconsent';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -74,6 +76,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     FormsModule,
     FontAwesomeModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
+    GraphQLModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
