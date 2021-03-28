@@ -8,13 +8,13 @@
           'product__card__content--even': !oddEven
         }"
       >
-        <div class="card-title bold">{{ product.title }}</div>
+        <div class="card-title bold">{{ product.name }}</div>
         <div class="card-description light">
           {{ product.description }}
         </div>
       </div>
       <div class="product__card__image">
-        <img [src]="product.image" alt="" />
+        <img [src]="product.image.url" alt="" />
       </div>
     </div>
   </a>
