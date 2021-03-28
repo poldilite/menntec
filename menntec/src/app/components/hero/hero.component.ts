@@ -15,6 +15,7 @@ export class HeroComponent implements OnInit {
   data: any = {};
   loading = false;
   errors: any;
+  heroText = '';
   heroTextSpan = '';
   heroTextNormal = '';
   descriptionText = '';
@@ -33,13 +34,23 @@ export class HeroComponent implements OnInit {
         this.loading = result.loading;
         this.errors = result.errors;
 
-        this.heroTextSpan = this.data.homepage.heroText.slice(0, 32); // TODO: Berechnung anpassen
-        this.heroTextNormal = this.data.homepage.heroText.slice(33, 99);
+        this.heroText = this.data.homepage.heroText;
+        const splitNumber = this.getPosition(this.heroText, ' ', 4);
+
+        this.heroTextSpan = this.data.homepage.heroText.slice(0, splitNumber); // TODO: Berechnung anpassen
+        this.heroTextNormal = this.data.homepage.heroText.slice(
+          splitNumber + 1,
+          this.heroText.length
+        );
       });
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {
     this.hpQuery.unsubscribe();
+  }
+
+  getPosition(text: string, subString: string, index: number): number {
+    return text.split(subString, index).join(subString).length;
   }
 }
