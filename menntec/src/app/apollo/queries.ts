@@ -37,3 +37,12 @@ export const PRODUCTS_QUERY = gql`
     }
   }
 `;
+
+export const IMPRINT_QUERY = gql`
+  query Imprint {
+    imprint {
+      title
+      imprintText
+    }
+  }
+`;
