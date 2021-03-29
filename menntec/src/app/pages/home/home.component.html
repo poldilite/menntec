@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="loading flex center_center wrapper" *ngIf="loading" [@fadeOut]>
+  <!-- TODO: Fade out -->
+  <img src="assets/img/MennTEC_logo_827x473px.png" alt="" />
+</div>
+<div class="content" *ngIf="!loading" [@fadeIn]>
+  <app-hero *ngIf="!loading" [heroText]="heroText"></app-hero>
+  <app-quote *ngIf="!loading" [descText]="descriptionText"></app-quote>
+  <app-products></app-products>
+  <app-about></app-about>
+  <app-cta></app-cta>
+</div>
+
+<!-- <app-contact></app-contact> -->
