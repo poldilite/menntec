@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { HOMEPAGE_DATA_QUERY } from '../../apollo/queries';
 import { stringify } from '@angular/compiler/src/util';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { hyphenate, hyphenateSync } from 'hyphen/de';
 
 @Component({
   selector: 'app-home',
@@ -48,7 +49,7 @@ export class HomeComponent implements OnInit {
         this.loading = result.loading;
         this.errors = result.errors;
 
-        this.heroText = this.data.homepage.heroText;
+        this.heroText = hyphenateSync(this.data.homepage.heroText);
         this.descriptionText = this.data.homepage.descriptionText;
       });
   }
