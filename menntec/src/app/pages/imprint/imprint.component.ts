@@ -14,6 +14,8 @@ export class ImprintComponent implements OnInit {
   data: any = {};
   loading = false;
   errors: any;
+  impTitle = '';
+  impText = '';
 
   constructor(private apollo: Apollo) {}
 
@@ -28,6 +30,9 @@ export class ImprintComponent implements OnInit {
         this.data = result.data;
         this.loading = result.loading;
         this.errors = result.errors;
+
+        this.impText = this.data.imprint.imprintText;
+        this.impTitle = this.data.imprint.title;
 
         console.log(this.data);
       });

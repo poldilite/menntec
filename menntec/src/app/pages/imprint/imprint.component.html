@@ -1,5 +1,5 @@
 <app-hero *ngIf="!loading" [heroText]="data.imprint.title"></app-hero>
-<section class="hero flex center_center wrapper">
-  <p>{{ data.imprint.title }}</p>
-  <p>{{ data.imprint.imprintText }}</p>
+<section class="hero inner wrapper">
+  <h1>{{ impTitle }}</h1>
+  <div [innerHtml]="impText"></div>
 </section>
