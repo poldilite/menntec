@@ -4,17 +4,44 @@
     <a href="" class="logo">
       <img src="assets/img/MennTEC_logo_827x473px.png" alt="" />
     </a>
-    <div class="hamburger-menu">
+    <div
+      class="hamburger-menu"
+      [ngClass]="isMenuOpen ? 'hamburger-menu--invisible' : ''"
+    >
       <!--
-      <span class="breadcrump">Home</span> -->
+      <span class="breadcrumb">Home</span> -->
       <!-- TODO: Build dynamic breadcrump -->
-      <button class="menu">
+      <button class="menu" (click)="openMenu()">
         <div class="menu__line"></div>
         <div class="menu__line"></div>
         <div class="menu__line"></div>
       </button>
       <!-- TODO: Build Nav-Menu -->
       <!-- TODO: Animate Hover -->
+    </div>
+    <div class="overlay" [ngClass]="isMenuOpen ? 'open' : ''">
+      <div class="menu-close__container">
+        <span class="breadcrumb">Menu</span>
+        <button class="menu-close" (click)="openMenu()">
+          <div class="menu-close__line"></div>
+          <div class="menu-close__line"></div>
+        </button>
+      </div>
+      <div class="main-menu">
+        <ul class="main-menu__list">
+          <li class="main-menu__item">
+            <a [routerLink]="['/']" (click)="openMenu()">Home</a>
+          </li>
+          <li class="main-menu__item">
+            <a [routerLink]="['/impressum']" (click)="openMenu()">Impressum</a>
+          </li>
+          <li class="main-menu__item">
+            <a [routerLink]="['/datenschutz']" (click)="openMenu()"
+              >Datenschutz</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
