@@ -47,3 +47,13 @@ export const IMPRINT_QUERY = gql`
     }
   }
 `;
+
+export const DATASEC_QUERY = gql`
+  query DataPrivacy {
+    dataPrivacy {
+      title
+      dataPrivacyText
+      heroTitle
+    }
+  }
+`;
