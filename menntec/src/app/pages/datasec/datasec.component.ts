@@ -27,6 +27,7 @@ export class DatasecComponent implements OnInit {
       .watchQuery({
         query: DATASEC_QUERY,
       })
+      // tslint:disable-next-line: deprecation
       .valueChanges.subscribe((result) => {
         this.data = result.data;
         this.loading = result.loading;
