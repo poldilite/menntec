@@ -20,6 +20,9 @@ body
 .text
   line-height: $lh-desktop
 
+p
+  line-height: $lh-desktop
+
 h1
   font-size: $fs-mobile-h1
 
@@ -38,6 +41,13 @@ h3
 
   @include for-size(tablet-portrait-up)
     font-size: $fs-h3
+
+h5
+  font-size: $fs-mobile-h5
+  color: $clr-accent
+
+  @include for-size(tablet-portrait-up)
+    font-size: $fs-h5
 
 a
   text-decoration: none

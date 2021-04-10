@@ -16,6 +16,7 @@ export class ImprintComponent implements OnInit {
   errors: any;
   impTitle = '';
   impText = '';
+  impHeroTitle = '';
 
   constructor(private apollo: Apollo) {}
 
@@ -31,10 +32,17 @@ export class ImprintComponent implements OnInit {
         this.loading = result.loading;
         this.errors = result.errors;
 
-        this.impText = this.data.imprint.imprintText;
+        // Get Title
         this.impTitle = this.data.imprint.title;
 
-        console.log(this.data);
+        // Get Text and exchange h2 header to h5 header
+        this.impText = this.data.imprint.imprintText;
+        this.impText = this.impText.replace(/\h2/g, 'h5');
+
+        // Get HeroText
+        this.impHeroTitle = this.data.imprint.heroTitle;
+
+        console.log(this.impText);
       });
   }
 }
