@@ -43,6 +43,7 @@ export const IMPRINT_QUERY = gql`
     imprint {
       title
       imprintText
+      heroTitle
     }
   }
 `;
