@@ -43,6 +43,17 @@ export const IMPRINT_QUERY = gql`
     imprint {
       title
       imprintText
+      heroTitle
+    }
+  }
+`;
+
+export const DATASEC_QUERY = gql`
+  query DataPrivacy {
+    dataPrivacy {
+      title
+      dataPrivacyText
+      heroTitle
     }
   }
 `;
