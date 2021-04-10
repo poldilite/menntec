@@ -31,10 +31,14 @@ export class ImprintComponent implements OnInit {
         this.loading = result.loading;
         this.errors = result.errors;
 
-        this.impText = this.data.imprint.imprintText;
+        // Put Title in TitleVariable
         this.impTitle = this.data.imprint.title;
 
-        console.log(this.data);
+        // Put Text in TextVariable and exchange h2 header to h5 header
+        this.impText = this.data.imprint.imprintText;
+        this.impText = this.impText.replace(/\h2/g, 'h5');
+
+        console.log(this.impText);
       });
   }
 }
