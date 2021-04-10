@@ -79,16 +79,13 @@
   z-index: 77777777
   color: $clr-primary
   background-color: $clr-nav
-  transform: translateX(100%)
   overflow: auto
-  animation: slideOut 80ms ease-in-out
 
   // TODO: Check, why animation is running, when opening the webpage
 
   &.open
     transform: none
     animation: none
-    animation: slideIn 300ms ease-in-out
 
   & .menu-close
     border-style: none
@@ -180,15 +177,3 @@
     width: 1.875rem
   100%
     width: 1rem
-
-@keyframes slideIn
-  0%
-    transform: translateX(100%)
-  100%
-    transform: translateX(0%)
-
-@keyframes slideOut
-  0%
-    transform: translateX(0%)
-  100%
-    transform: translateX(100%)

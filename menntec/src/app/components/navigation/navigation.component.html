@@ -19,7 +19,11 @@
       <!-- TODO: Build Nav-Menu -->
       <!-- TODO: Animate Hover -->
     </div>
-    <div class="overlay" [ngClass]="isMenuOpen ? 'open' : ''">
+    <div
+      class="overlay"
+      [ngClass]="isMenuOpen ? 'open' : ''"
+      [@slide]="isMenuOpen ? 'open' : 'closed'"
+    >
       <div class="menu-close__container">
         <span class="breadcrumb">Menu</span>
         <button class="menu-close" (click)="openMenu()">
