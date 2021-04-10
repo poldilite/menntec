@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import { DATASEC_QUERY } from '../../apollo/queries';
@@ -7,6 +7,7 @@ import { DATASEC_QUERY } from '../../apollo/queries';
   selector: 'app-datasec',
   templateUrl: './datasec.component.html',
   styleUrls: ['./datasec.component.sass'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DatasecComponent implements OnInit {
   private dataSecQuery: Subscription = new Subscription();
@@ -26,12 +27,22 @@ export class DatasecComponent implements OnInit {
       .watchQuery({
         query: DATASEC_QUERY,
       })
+      // tslint:disable-next-line: deprecation
       .valueChanges.subscribe((result) => {
         this.data = result.data;
         this.loading = result.loading;
         this.errors = result.errors;
 
         // Get Title
+        this.dsTitle = this.data.dataPrivacy.title;
+
+        // Get Text
+        this.dsText = this.data.dataPrivacy.dataPrivacyText;
+        this.dsText = this.dsText.replace(/\h2/g, 'h5');
+
+        // Get HeroTitle
+        this.dsHeroTitle = this.data.dataPrivacy.heroTitle;
+
         console.log(this.data);
       });
   }
