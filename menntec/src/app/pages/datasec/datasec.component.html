@@ -1,1 +1,5 @@
-<p>datasec works!</p>
+<app-hero *ngIf="!loading" [heroText]="dsHeroTitle"></app-hero>
+<section class="inner wrapper data-privacy">
+  <h1 class="data-privacy__title">{{ dsTitle }}</h1>
+  <div class="data-privacy__text" [innerHtml]="dsText"></div>
+</section>
