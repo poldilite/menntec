@@ -16,7 +16,7 @@ import { ImprintComponent } from './pages/imprint/imprint.component';
 import { DatasecComponent } from './pages/datasec/datasec.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { QuoteComponent } from './components/quote/quote.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CtaComponent } from './components/cta/cta.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -25,6 +25,7 @@ import {
 } from 'ngx-cookieconsent';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SocialMediaComponent } from './components/social-media/social-media.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -71,12 +72,14 @@ const cookieConfig: NgcCookieConsentConfig = {
     ProductCardComponent,
     QuoteComponent,
     CtaComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     GraphQLModule,
