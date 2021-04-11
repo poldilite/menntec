@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { HOMEPAGE_DATA_QUERY } from '../../apollo/queries';
 
 @Component({
   selector: 'app-quote',
   templateUrl: './quote.component.html',
-  styleUrls: ['./quote.component.sass']
+  styleUrls: ['./quote.component.sass'],
 })
 export class QuoteComponent implements OnInit {
+  @Input() descText!: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
