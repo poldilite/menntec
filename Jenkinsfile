@@ -64,7 +64,7 @@ pipeline {
                 echo 'No Deployment (Dev)' 
               }
               else {
-                echo 'Deploy to Stage'
+                echo 'Deploy to Live'
                 ftpPublisher  alwaysPublishFromMaster: true,
                       continueOnError: false,
                       failOnError: false,
