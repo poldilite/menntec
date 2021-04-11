@@ -25,6 +25,7 @@ import {
 } from 'ngx-cookieconsent';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SocialMediaComponent } from './components/social-media/social-media.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -71,6 +72,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     ProductCardComponent,
     QuoteComponent,
     CtaComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,
