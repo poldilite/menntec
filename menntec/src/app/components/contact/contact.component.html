@@ -3,14 +3,14 @@
     <h2 class="contact__title">Kontaktieren Sie uns...</h2>
     <div class="contact__description">
       <p class="contact__text">
-        Wondering if we can help, but not ready for a chat? Just drop us a line
-        in the form bellow we'll get back to you.
+        Sie suchen einen Partner für Ihr nächstes Projekt? Hinterlassen Sie mir
+        eine Nachricht und nehme gerne Kontakt zu Ihnen auf.
       </p>
     </div>
 
     <div class="contact__form">
       <form
-        (ngSubmit)="onSubmit()"
+        (ngSubmit)="onSubmit(contForm)"
         #form="ngForm"
         #contForm="ngForm"
         novalidate
@@ -18,18 +18,35 @@
         <div class="inputField">
           <input
             type="text"
-            name="fullName"
+            name="firstName"
             class="contact__form__input"
-            placeholder="Vor- und Nachname eingeben"
-            [(ngModel)]="contactData.fullName"
-            #fullNameInput="ngModel"
+            placeholder="Vorname eingeben"
+            [(ngModel)]="contactData.firstName"
+            #firstNameInput="ngModel"
             required
           />
           <div
             class="is-error"
-            *ngIf="fullNameInput.invalid && fullNameInput.touched"
+            *ngIf="firstNameInput.invalid && firstNameInput.touched"
           >
-            Bitte geben Sie einen Namen ein
+            Bitte geben Sie Ihren Vornamen ein
+          </div>
+        </div>
+        <div class="inputField">
+          <input
+            type="text"
+            name="lastName"
+            class="contact__form__input"
+            placeholder="Nachname eingeben"
+            [(ngModel)]="contactData.lastName"
+            #lastNameInput="ngModel"
+            required
+          />
+          <div
+            class="is-error"
+            *ngIf="lastNameInput.invalid && lastNameInput.touched"
+          >
+            Bitte geben Sie Ihren Nachnamen ein
           </div>
         </div>
         <div class="inputField">
@@ -40,6 +57,7 @@
             placeholder="eMail-Adresse eingeben"
             [(ngModel)]="contactData.eMail"
             #eMailInput="ngModel"
+            email
             required
           />
           <div
@@ -47,6 +65,21 @@
             *ngIf="eMailInput.invalid && eMailInput.touched"
           >
             Bitte geben Sie eine gültige eMail-Adresse ein
+          </div>
+        </div>
+        <div class="inputField">
+          <input
+            type="tel"
+            name="tel"
+            class="contact__form__input"
+            placeholder="Telefonnummer eingeben"
+            [(ngModel)]="contactData.tel"
+            #telInput="ngModel"
+            number
+            required
+          />
+          <div class="is-error" *ngIf="telInput.invalid && telInput.touched">
+            Bitte geben Sie eine gültige Telefonnumer ein
           </div>
         </div>
         <div class="inputField">
@@ -75,6 +108,9 @@
           </button>
         </div>
       </form>
+    </div>
+    <div class="contact__sent" *ngIf="submitted">
+      Danke für Ihre Nachricht, ich komme so schnell wie möglich auf Sie zu.
     </div>
   </div>
 </section>

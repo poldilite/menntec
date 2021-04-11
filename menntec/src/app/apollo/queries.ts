@@ -57,3 +57,33 @@ export const DATASEC_QUERY = gql`
     }
   }
 `;
+
+export const INQUIRIES_MUTATION = gql`
+  mutation Inquiries(
+    $firstName: String!
+    $lastName: String!
+    $phone: String
+    $email: String!
+    $message: String!
+  ) {
+    createIquiry(
+      input: {
+        data: {
+          firstName: $firstName
+          lastName: $lastName
+          phone: $phone
+          email: $email
+          inquiryText: $message
+        }
+      }
+    ) {
+      iquiry {
+        firstName
+        lastName
+        phone
+        email
+        inquiryText
+      }
+    }
+  }
+`;
