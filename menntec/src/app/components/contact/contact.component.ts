@@ -58,8 +58,6 @@ export class ContactComponent implements OnInit {
     this.resetSubmit();
   }
 
-  // das ist nur ein test zum pushen
-
   // tslint:disable-next-line: typedef
   resetSubmit() {
     setTimeout(() => {
