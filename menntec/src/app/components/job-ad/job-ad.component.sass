@@ -3,25 +3,33 @@
 @import './../../../assets/sass/mixins'
 
 .jobAd
-  height: 29rem
-  margin-bottom: 0
   background: $clr-primary
   overflow: hidden
   display: block
+  font-size: .85rem
+  padding-top: 2rem
 
   @include for-size(tablet-portrait-up)
-    height: 17rem
-    margin-bottom: 3.75rem
 
   @include for-size(tablet-landscape-up)
-    height: 30rem
 
-  &__inner
-    height: 100%
-    margin: 0
-    position: relative
-    display: flex
-    flex-wrap: wrap
-    flex-direction: row
+  &__title
+    padding-top: 1rem
 
-    @include for-size(tablet-portrait-up)
+  &__content
+
+    &__details
+      padding: 1rem 0rem 0.5rem 0rem
+
+    &__text
+      padding: 0.5rem 1rem
+
+  &__cta
+    background: $clr-accent
+    margin: 1.5rem -2rem 0rem -2rem
+    padding: 2.5rem
+    color: $clr-primary
+    font-weight: $fw-semibold
+
+    & p
+      margin: .5rem 0
