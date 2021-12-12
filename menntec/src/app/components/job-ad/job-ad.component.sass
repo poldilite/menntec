@@ -1,0 +1,27 @@
+
+@import './../../../assets/sass/var'
+@import './../../../assets/sass/mixins'
+
+.jobAd
+  height: 29rem
+  margin-bottom: 0
+  background: $clr-primary
+  overflow: hidden
+  display: block
+
+  @include for-size(tablet-portrait-up)
+    height: 17rem
+    margin-bottom: 3.75rem
+
+  @include for-size(tablet-landscape-up)
+    height: 30rem
+
+  &__inner
+    height: 100%
+    margin: 0
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+
+    @include for-size(tablet-portrait-up)
