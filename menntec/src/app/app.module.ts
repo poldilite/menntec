@@ -16,6 +16,7 @@ import { ImprintComponent } from './pages/imprint/imprint.component';
 import { DatasecComponent } from './pages/datasec/datasec.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { QuoteComponent } from './components/quote/quote.component';
+import { JobAdComponent } from './components/job-ad/job-ad.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CtaComponent } from './components/cta/cta.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -73,6 +74,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     QuoteComponent,
     CtaComponent,
     SocialMediaComponent,
+    JobAdComponent,
   ],
   imports: [
     BrowserModule,
