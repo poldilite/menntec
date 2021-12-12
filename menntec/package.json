@@ -27,6 +27,7 @@
     "@types/hyphen": "^1.6.3",
     "apollo-angular": "^2.4.0",
     "cookieconsent": "^3.1.1",
+    "emailjs-com": "^3.1.0",
     "graphql": "^15.0.0",
     "hyphen": "^1.6.4",
     "ngx-cookieconsent": "^2.2.3",

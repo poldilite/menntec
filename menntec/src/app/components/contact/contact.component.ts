@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import { INQUIRIES_MUTATION } from '../../apollo/queries';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 @Component({
   selector: 'app-contact',
@@ -17,10 +18,22 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {}
 
   // Submit Contact Form
-
   // tslint:disable-next-line: typedef
   onSubmit(form: NgForm) {
     this.submitted = true;
+
+    console.log('send it');
+    emailjs.send(
+      'service_5j7ihj9',
+      'template_00v3qn1',
+      {
+        from_name: 'fdffdf',
+        to_name: 'fdfads',
+        message: 'pdf',
+        reply_to: 'dfasdf',
+      },
+      'user_9tgvdBnOJBNGB0BGccoss'
+    );
 
     this.apollo
       .mutate({
@@ -44,6 +57,8 @@ export class ContactComponent implements OnInit {
     form.reset();
     this.resetSubmit();
   }
+
+  // das ist nur ein test zum pushen
 
   // tslint:disable-next-line: typedef
   resetSubmit() {
