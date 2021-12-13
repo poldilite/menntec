@@ -16,6 +16,9 @@
   &__title
     padding-top: 1rem
 
+  &__subTitle
+    padding-bottom: 1.5rem
+
   &__content
 
     &__details
@@ -26,10 +29,35 @@
 
   &__cta
     background: $clr-accent
-    margin: 1.5rem -2rem 0rem -2rem
-    padding: 2.5rem
+    margin: 1.5rem -20rem 0rem -20rem
+    padding: 2.5rem 20.5rem
     color: $clr-primary
     font-weight: $fw-semibold
 
     & p
       margin: .5rem 0
+
+  &__banner
+    background: $clr-accent
+    padding: 1rem 5rem 1rem 2rem
+    color: $clr-primary
+    font-weight: $fw-semibold
+    position: absolute
+    width: 50rem
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+    transform: rotate(-5deg)
+    transform: skewY(-5deg)
+
+    & a
+      color: $clr-primary
+
+    &--up
+      top: 4rem
+      z-index: 99
+      right: -33rem
+
+    &--down
+      top: 7rem
+      z-index: 90
+      right: -33.5rem
+      background: darken($clr-accent, 10%)
