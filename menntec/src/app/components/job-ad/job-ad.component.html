@@ -1,83 +1,68 @@
 <section class="jobAd">
   <!-- <div class="inner">
 
-    <h2 class="jobAd__title">Anlagenmechaniker (m/w/d)</h2>
-    <h4 class="jobAd__subTitle">für Sanitär, Heizung und Klimatechnik</h4>
-    <div class="jobAd__content">
-      <div class="jobAd__content__details">
-        <h3 class="jobAd__content__title">Aufgabengebiet</h3>
-        <div class="jobAd__content__text">
-          <ul>
-            <li>Installation von Neubauten</li>
-            <li>Modernisierung von Altbauten</li>
-            <li>
-              Installation und Instandhaltung von technischen Anlagen in der
-              Kleinindustrie sowie öffentlichen Gebäuden
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="jobAd__content__details">
-        <h3 class="jobAd__content__title">Was Sie mitbringen sollten</h3>
-        <div class="jobAd__content__text">
-          <ul>
-            <li>Führerschein Klasse B</li>
-            <li>Stets freundlicher Umgang mit unseren Kunden</li>
-            <li>
-              Zuverlässigkeit, Teamfähigkeit und ein hohes Maß an
-              Leistungsbereitschaft
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="jobAd__content__details">
-        <h3 class="jobAd__content__title">Was Sie von uns erwarten dürfen</h3>
-        <div class="jobAd__content__text">
-          <ul>
-            <li>Eine familiäre Arbeitsatmosphäre in einem sympathische Team</li>
-            <li>
-              Spannendes Aufgabenspektrum in einem inhabergeführten Betrieb
-            </li>
-            <li>Eigenverantwortung für ihr Aufgabengebiet</li>
-            <li>Fachliche und persönliche Entwicklungsmöglichkeiten</li>
-            <li>Leistungsgerechte Vergütung</li>
-            <li>Festanstellung in Vollzeit</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="jobAd__cta">
-      <p>
-        Wir haben Ihr Interesse geweckt? Dann freuen wir uns auf Ihre
-        aussagekräftige Bewerbung per Post oder per eMail.
-      </p>
-      <p>
-        Ansprechpartner: Holger Menne | info@menntec.de | Tel.: +49 177 3136260
-        <br />
-        Postanschrift: Am Grünen Weg 23, 52385 Nideggen
-      </p>
-    </div>
+
+
+
   </div> -->
 
   <div class="inner">
-    <!-- <div class="jobAd__banner jobAd__banner--up">Bewirb dich jetzt!</div>
-    <div class="jobAd__banner jobAd__banner--down">
-      <a href="mailto:info@menntec.de">info@menntec.de</a>
-    </div> -->
     <div class="jobAd-slider">
       <div class="jobAd-slider__main">
         <div class="jobAd-slider__box">
+          <div class="jobAd__banner jobAd__banner--up">Bewirb dich jetzt!</div>
+          <div class="jobAd__banner jobAd__banner--down">
+            <a href="mailto:info@menntec.de">info@menntec.de</a>
+          </div>
           <div class="jobAd-slider__slide" id="slide" #slide>
-            <div class="jobAd-slider__cards" *ngFor="let slide of jobAdArray">
-              <div class="jobAd-slider__ad">
-                <img src="{{ slide.img }}" alt="" />
+            <div class="jobAd-slider__cards" *ngFor="let jobAd of jobAdArray">
+              <h2 class="jobAd__title">{{ jobAd.title }}</h2>
+              <h4 class="jobAd__subTitle">
+                {{ jobAd.subTitle }}
+              </h4>
+              <div class="jobAd__content">
+                <div class="jobAd__content__details">
+                  <h3 class="jobAd__content__title">Aufgabengebiet</h3>
+                  <div class="jobAd__content__text">
+                    <ul>
+                      <li *ngFor="let e of jobAdArray.fieldOfActivity">
+                        {{ e }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="jobAd__content__details">
+                  <h3 class="jobAd__content__title">
+                    Was Sie mitbringen sollten
+                  </h3>
+                  <div class="jobAd__content__text">
+                    <ul>
+                      <li *ngFor="let e of jobAdArray.whatToBring"></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="jobAd__content__details">
+                  <h3 class="jobAd__content__title">
+                    Was Sie von uns erwarten dürfen
+                  </h3>
+                  <div class="jobAd__content__text">
+                    <ul>
+                      <li *ngFor="let e of jobAdArray.whatToExpect"></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div class="jobAd-slider__name">
-                <h2>{{ slide.name }}</h2>
-                <p>{{ slide.date }}</p>
-              </div>
-              <div class="jobAd-slider__content">
-                <p>{{ slide.content }}</p>
+              <div class="jobAd__cta">
+                <p>
+                  Wir haben Ihr Interesse geweckt? Dann freuen wir uns auf Ihre
+                  aussagekräftige Bewerbung per Post oder per eMail.
+                </p>
+                <p>
+                  Ansprechpartner: Holger Menne | info@menntec.de | Tel.: +49
+                  177 3136260
+                  <br />
+                  Postanschrift: Am Grünen Weg 23, 52385 Nideggen
+                </p>
               </div>
             </div>
           </div>
