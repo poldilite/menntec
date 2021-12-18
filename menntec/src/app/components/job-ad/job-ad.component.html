@@ -1,9 +1,6 @@
 <section class="jobAd">
-  <div class="inner">
-    <div class="jobAd__banner jobAd__banner--up">Bewirb dich jetzt!</div>
-    <div class="jobAd__banner jobAd__banner--down">
-      <a href="mailto:info@menntec.de">info@menntec.de</a>
-    </div>
+  <!-- <div class="inner">
+
     <h2 class="jobAd__title">Anlagenmechaniker (m/w/d)</h2>
     <h4 class="jobAd__subTitle">für Sanitär, Heizung und Klimatechnik</h4>
     <div class="jobAd__content">
@@ -59,6 +56,39 @@
         <br />
         Postanschrift: Am Grünen Weg 23, 52385 Nideggen
       </p>
+    </div>
+  </div> -->
+
+  <div class="inner">
+    <!-- <div class="jobAd__banner jobAd__banner--up">Bewirb dich jetzt!</div>
+    <div class="jobAd__banner jobAd__banner--down">
+      <a href="mailto:info@menntec.de">info@menntec.de</a>
+    </div> -->
+    <div class="jobAd-slider">
+      <div class="jobAd-slider__main">
+        <div class="jobAd-slider__box">
+          <div class="jobAd-slider__slide" id="slide" #slide>
+            <div class="jobAd-slider__cards" *ngFor="let slide of jobAdArray">
+              <div class="jobAd-slider__ad">
+                <img src="{{ slide.img }}" alt="" />
+              </div>
+              <div class="jobAd-slider__name">
+                <h2>{{ slide.name }}</h2>
+                <p>{{ slide.date }}</p>
+              </div>
+              <div class="jobAd-slider__content">
+                <p>{{ slide.content }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="jobAd-slider__button" (click)="prev()">
+          Preview
+        </button>
+        <button type="button" class="jobAd-slider__button" (click)="next()">
+          Next
+        </button>
+      </div>
     </div>
   </div>
 </section>

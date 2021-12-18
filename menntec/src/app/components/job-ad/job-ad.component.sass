@@ -3,11 +3,13 @@
 @import './../../../assets/sass/mixins'
 
 .jobAd
-  background: $clr-primary
+  background: linear-gradient($clr-accent, $clr-secondary)
   overflow: hidden
   display: block
   font-size: .85rem
   padding-top: 2rem
+  min-height: 100vh
+  position: relative
 
   @include for-size(tablet-portrait-up)
 
@@ -61,3 +63,105 @@
       z-index: 90
       right: -33.5rem
       background: darken($clr-accent, 10%)
+
+.jobAd-slider
+  width: 80%
+
+  &__main
+    position: absolute
+    width: 80%
+    left: 50%
+    transform: translateX(-50%)
+
+  &__box
+    position: relative
+    border: 2px solid rgb(223,5,5)
+    height: 60vh
+    width: 100%
+    border-radius: 4px
+    background: #fff
+    overflow: hidden
+
+    &::after
+      content: ''
+      position: absolute
+      top: -50px
+      left: -50px
+      height: 100px
+      width: 100px
+      border-radius: 50%
+      z-index: 1
+
+  &__cards
+    padding: 20px
+    height: 60vh
+
+  &__ad
+    width: 100px
+    height: 100px
+    display: inline-block
+
+    & img
+      width: 100px
+      height: 100px
+      border-radius: 50%
+      object-fit: cover
+      border: 1px solid #222
+      padding: 4px
+
+  &__name
+    display: inline-block
+    width: calc( 100% - 130px )
+    margin-left: 18px
+    vertical-align: middle
+
+    & h2
+      font-size: 20px
+      position: relative
+
+      &::after
+        content: ''
+        position: absolute
+        height: 2px
+        width: 30px
+        background: rgb(223,5 ,5 )
+        left: 0
+        bottom: -8px
+
+    & p
+      margin-top: 20px
+      color: rgb(68, 68, 68)
+      line-height: 20px
+      font-size: 14px
+
+  &__content p
+    margin-top: 20px
+    color: rgb(68, 68, 68)
+    line-height: 20px
+    font-size: 14px
+
+  &__button
+    background: rgb(255, 255, 255)
+    border: 1px solid #df0505
+    color: #df0505
+    font-size: 16px
+    margin-right: 8px
+    font-weight: 600
+    outline: none
+    margin-top: 14px
+    cursor: pointer
+    letter-spacing: .2px
+    border-radius: 2px
+    transition: .2s ease-in-out
+
+    &:hover
+      background: transparent
+      color: white
+      border: 1px solid white
+
+#slide
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  transition: .4s
