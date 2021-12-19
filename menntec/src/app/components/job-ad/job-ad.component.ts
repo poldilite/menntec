@@ -89,7 +89,8 @@ export class JobAdComponent implements OnInit {
       this.i = this.i - 75;
       this.slide.nativeElement.style.top = this.i + 'vh';
     }
-    console.log(this.j);
+
+    console.log(this.jobAdArray.length);
   }
 
   prev() {
@@ -98,6 +99,5 @@ export class JobAdComponent implements OnInit {
       this.i = this.i + 75;
       this.slide.nativeElement.style.top = this.i + 'vh';
     }
-    console.log(this.i & this.jobAdArray.length);
   }
 }
