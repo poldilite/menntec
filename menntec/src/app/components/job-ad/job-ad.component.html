@@ -25,8 +25,8 @@
                   <h3 class="jobAd__content__title">Aufgabengebiet</h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li *ngFor="let e of jobAdArray.fieldOfActivity">
-                        {{ e }}
+                      <li *ngFor="let foaElement of jobAd['fieldOfActivity']">
+                        {{ foaElement }}
                       </li>
                     </ul>
                   </div>
@@ -37,7 +37,9 @@
                   </h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li *ngFor="let e of jobAdArray.whatToBring"></li>
+                      <li *ngFor="let wtbElement of jobAd['whatToBring']">
+                        {{ wtbElement }}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -47,32 +49,46 @@
                   </h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li *ngFor="let e of jobAdArray.whatToExpect"></li>
+                      <li *ngFor="let wteElement of jobAd['whatToExpect']">
+                        {{ wteElement }}
+                      </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div class="jobAd__cta">
-                <p>
-                  Wir haben Ihr Interesse geweckt? Dann freuen wir uns auf Ihre
-                  aussagekräftige Bewerbung per Post oder per eMail.
-                </p>
-                <p>
-                  Ansprechpartner: Holger Menne | info@menntec.de | Tel.: +49
-                  177 3136260
-                  <br />
-                  Postanschrift: Am Grünen Weg 23, 52385 Nideggen
-                </p>
-              </div>
             </div>
           </div>
+          <div class="jobAd__cta">
+            <p>
+              Wir haben Ihr Interesse geweckt? Dann freuen wir uns auf Ihre
+              aussagekräftige Bewerbung per Post oder per eMail.
+            </p>
+            <p>
+              Ansprechpartner: Holger Menne | info@menntec.de | Tel.: +49 177
+              3136260
+              <br />
+              Postanschrift: Am Grünen Weg 23, 52385 Nideggen
+            </p>
+          </div>
         </div>
-        <button type="button" class="jobAd-slider__button" (click)="prev()">
-          Preview
-        </button>
-        <button type="button" class="jobAd-slider__button" (click)="next()">
-          Next
-        </button>
+        <div class="jobAd__btns">
+          <button
+            type="button"
+            class="btn btn-primary btn-jobAd btn-jobAd--prev bold txt-gray"
+            (click)="prev()"
+            *ngIf="i !== 0"
+          >
+            Vorherige Anzeige
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary btn-jobAd btn-jobAd--next bold txt-gray"
+            (click)="next()"
+            *ngIf="j !== 0"
+          >
+            Nächste Anzeige
+          </button>
+        </div>
       </div>
     </div>
   </div>

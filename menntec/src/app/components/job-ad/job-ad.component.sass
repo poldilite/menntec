@@ -1,12 +1,13 @@
 
 @import './../../../assets/sass/var'
 @import './../../../assets/sass/mixins'
+@import './../../../assets/sass/buttons'
 
 .jobAd
   background: linear-gradient($clr-accent, $clr-secondary)
   overflow: hidden
   display: block
-  font-size: .85rem
+  font-size: .825rem
   padding-top: 2rem
   min-height: 100vh
   position: relative
@@ -15,11 +16,8 @@
 
   @include for-size(tablet-landscape-up)
 
-  &__title
-    padding-top: 1rem
-
   &__subTitle
-    padding-bottom: 1.5rem
+    padding-bottom: .75rem
 
   &__content
 
@@ -31,10 +29,12 @@
 
   &__cta
     background: $clr-accent
-    margin: 1.5rem -20rem 0rem -20rem
-    padding: 2.5rem 20.5rem
     color: $clr-primary
     font-weight: $fw-semibold
+    z-index: 2000
+    position: absolute
+    bottom: 0
+    padding: 1rem 1.5rem
 
     & p
       margin: .5rem 0
@@ -54,15 +54,25 @@
       color: $clr-primary
 
     &--up
-      top: 4rem
+      top: 5rem
       z-index: 99
       right: -33rem
 
     &--down
-      top: 7rem
+      top: 8rem
       z-index: 90
       right: -33.5rem
       background: darken($clr-accent, 10%)
+
+  &__btns
+    padding: 1rem
+    margin: 0
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    display: grid
+    width: 45rem
+    grid-template-columns: 1fr 1fr
 
 .jobAd-slider
   width: 80%
@@ -101,32 +111,7 @@
     height: 100px
     display: inline-block
 
-    & img
-      width: 100px
-      height: 100px
-      border-radius: 50%
-      object-fit: cover
-      border: 1px solid #222
-      padding: 4px
-
   &__button
-    background: rgb(255, 255, 255)
-    border: 1px solid #df0505
-    color: #df0505
-    font-size: 16px
-    margin-right: 8px
-    font-weight: 600
-    outline: none
-    margin-top: 14px
-    cursor: pointer
-    letter-spacing: .2px
-    border-radius: 2px
-    transition: .2s ease-in-out
-
-    &:hover
-      background: transparent
-      color: white
-      border: 1px solid white
 
 #slide
   position: absolute
