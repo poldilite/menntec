@@ -58,6 +58,18 @@ export const DATASEC_QUERY = gql`
   }
 `;
 
+export const JOBADS_QUERY = gql`
+  query JobAds {
+    jobAds {
+      id
+      jobTitle
+      whatToExpectFromUsList {
+        whatToExpectFromUsText
+      }
+    }
+  }
+`;
+
 export const INQUIRIES_MUTATION = gql`
   mutation Inquiries(
     $firstName: String!

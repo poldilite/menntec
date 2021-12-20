@@ -8,18 +8,20 @@
             <a href="mailto:info@menntec.de">info@menntec.de</a>
           </div>
           <div class="jobAd-slider__slide" id="slide" #slide>
-            <div class="jobAd-slider__cards" *ngFor="let jobAd of jobAdArray">
-              <h2 class="jobAd__title">{{ jobAd.title }}</h2>
+            <div class="jobAd-slider__cards" *ngFor="let jobAd of jobAds">
+              <h2 class="jobAd__title">{{ jobAd.jobTitle }}</h2>
               <h4 class="jobAd__subTitle">
-                {{ jobAd.subTitle }}
+                {{ jobAd.jobSubTitle }}
               </h4>
               <div class="jobAd__content">
                 <div class="jobAd__content__details">
                   <h3 class="jobAd__content__title">Aufgabengebiet</h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li *ngFor="let foaElement of jobAd['fieldOfActivity']">
-                        {{ foaElement }}
+                      <li
+                        *ngFor="let foaElement of jobAd.whatToExpectFromUsList"
+                      >
+                        {{ foaElement.whatToExpectFromUsText }}
                       </li>
                     </ul>
                   </div>

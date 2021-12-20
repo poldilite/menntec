@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { Subscription } from 'rxjs';
+import { JOBADS_QUERY } from '../../apollo/queries';
 
 @Component({
   selector: 'app-job-ad',
@@ -6,9 +9,30 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./job-ad.component.sass'],
 })
 export class JobAdComponent implements OnInit {
-  constructor() {}
+  private jobAdQuery: Subscription = new Subscription();
 
-  ngOnInit(): void {}
+  data: any = {};
+  loading = false;
+  errors: any;
+  jobAds: any = [];
+
+  constructor(private apollo: Apollo) {}
+
+  ngOnInit(): void {
+    this.loading = true;
+    this.jobAdQuery = this.apollo
+      .watchQuery({
+        query: JOBADS_QUERY,
+      })
+      .valueChanges.subscribe((result) => {
+        this.data = result.data;
+        this.loading = result.loading;
+        this.errors = result.errors;
+        this.jobAds = this.data.jobAds;
+
+        console.log(this.jobAds);
+      });
+  }
 
   jobAdArray: any = [
     {
