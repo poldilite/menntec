@@ -17,6 +17,13 @@ export class JobAdComponent implements OnInit {
   errors: any;
   jobAds: any = [];
   j = 0;
+  bannerText1 = '';
+  bannerText2 = '';
+
+  jobContactFirstName = '';
+  jobContactLastName = '';
+  jobContactEMail = '';
+  jobContactTel = '';
 
   constructor(private apollo: Apollo) {}
 
@@ -33,6 +40,13 @@ export class JobAdComponent implements OnInit {
         this.jobAds = this.data.jobAds;
         this.dataLength = this.jobAds.length;
 
+        this.bannerText1 = this.jobAds[0].bannerText1;
+        this.bannerText2 = this.jobAds[0].bannerText2;
+
+        this.jobContactFirstName = this.jobAds[0].contact.firstName;
+        this.jobContactLastName = this.jobAds[0].contact.lastName;
+        this.jobContactEMail = this.jobAds[0].contact.email;
+
         this.j = this.dataLength - 1;
       });
   }
@@ -46,9 +60,10 @@ export class JobAdComponent implements OnInit {
       this.j--;
       this.i = this.i - 75;
       this.slide.nativeElement.style.top = this.i + 'vh';
-    }
 
-    console.log(this.j);
+      this.bannerText1 = this.jobAds[this.j + 1].bannerText1;
+      this.bannerText2 = this.jobAds[this.j + 1].bannerText2;
+    }
   }
 
   prev() {
@@ -56,6 +71,9 @@ export class JobAdComponent implements OnInit {
       this.j++;
       this.i = this.i + 75;
       this.slide.nativeElement.style.top = this.i + 'vh';
+
+      this.bannerText1 = this.jobAds[this.j - 1].bannerText1;
+      this.bannerText2 = this.jobAds[this.j - 1].bannerText2;
     }
   }
 }

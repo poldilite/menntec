@@ -63,8 +63,24 @@ export const JOBADS_QUERY = gql`
     jobAds {
       id
       jobTitle
-      whatToExpectFromUsList {
-        whatToExpectFromUsText
+      jobTitleSubtext
+      bannerText1
+      bannerText2
+      jobDetails {
+        whatYouWillBeDoingList {
+          whatYouWillBeDoingText
+        }
+        whatWeExpectFromYouList {
+          whatWeExpectFromYouText
+        }
+        whatToExpectFromUsList {
+          whatToExpectFromUsText
+        }
+      }
+      contact {
+        firstName
+        lastName
+        email
       }
     }
   }

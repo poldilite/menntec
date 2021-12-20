@@ -30,8 +30,6 @@ export class ProductCardComponent implements OnInit {
         this.errors = result.errors;
 
         this.products = this.data.services;
-
-        console.log(this.products);
       });
   }
 }

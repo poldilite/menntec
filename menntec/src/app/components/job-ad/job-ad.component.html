@@ -1,17 +1,19 @@
-<section class="jobAd" *ngIf="jobAds.length > 0">
+<section class="jobAd" *ngIf="j >= 0">
   <div class="inner">
     <div class="jobAd-slider">
       <div class="jobAd-slider__main">
         <div class="jobAd-slider__box">
-          <div class="jobAd__banner jobAd__banner--up">Bewirb dich jetzt!</div>
+          <div class="jobAd__banner jobAd__banner--up">
+            {{ bannerText1 }}
+          </div>
           <div class="jobAd__banner jobAd__banner--down">
-            <a href="mailto:info@menntec.de">info@menntec.de</a>
+            {{ bannerText2 }}
           </div>
           <div class="jobAd-slider__slide" id="slide" #slide>
             <div class="jobAd-slider__cards" *ngFor="let jobAd of jobAds">
               <h2 class="jobAd__title">{{ jobAd.jobTitle }}</h2>
               <h4 class="jobAd__subTitle">
-                {{ jobAd.jobSubTitle }}
+                {{ jobAd.jobTitleSubtext }}
               </h4>
               <div class="jobAd__content">
                 <div class="jobAd__content__details">
@@ -19,9 +21,11 @@
                   <div class="jobAd__content__text">
                     <ul>
                       <li
-                        *ngFor="let foaElement of jobAd.whatToExpectFromUsList"
+                        *ngFor="
+                          let item of jobAd.jobDetails.whatYouWillBeDoingList
+                        "
                       >
-                        {{ foaElement.whatToExpectFromUsText }}
+                        {{ item.whatYouWillBeDoingText }}
                       </li>
                     </ul>
                   </div>
@@ -32,8 +36,12 @@
                   </h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li *ngFor="let wtbElement of jobAd['whatToBring']">
-                        {{ wtbElement }}
+                      <li
+                        *ngFor="
+                          let item of jobAd.jobDetails.whatWeExpectFromYouList
+                        "
+                      >
+                        {{ item.whatWeExpectFromYouText }}
                       </li>
                     </ul>
                   </div>
@@ -44,8 +52,12 @@
                   </h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li *ngFor="let wteElement of jobAd['whatToExpect']">
-                        {{ wteElement }}
+                      <li
+                        *ngFor="
+                          let item of jobAd.jobDetails.whatToExpectFromUsList
+                        "
+                      >
+                        {{ item.whatToExpectFromUsText }}
                       </li>
                     </ul>
                   </div>
@@ -59,7 +71,8 @@
               aussagekräftige Bewerbung per Post oder per eMail.
             </p>
             <p>
-              Ansprechpartner: Holger Menne | info@menntec.de | Tel.: +49 177
+              Ansprechpartner: {{ jobContactFirstName }}
+              {{ jobContactLastName }} | {{ jobContactEMail }} | Tel.: +49 177
               3136260
               <br />
               Postanschrift: Am Grünen Weg 23, 52385 Nideggen
@@ -69,7 +82,7 @@
         <div class="jobAd__btns">
           <button
             type="button"
-            class="btn btn-primary btn-jobAd btn-jobAd--prev bold txt-gray"
+            class="btn btn-primary btn-jobAd btn-jobAd--prev bold"
             (click)="prev()"
             *ngIf="i !== 0"
           >
@@ -77,9 +90,9 @@
           </button>
           <button
             type="button"
-            class="btn btn-primary btn-jobAd btn-jobAd--next bold txt-gray"
+            class="btn btn-primary btn-jobAd btn-jobAd--next bold"
             (click)="next()"
-            *ngIf="j >= 0"
+            *ngIf="j > 0"
           >
             Nächste Anzeige
           </button>
