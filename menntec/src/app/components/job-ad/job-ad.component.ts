@@ -12,9 +12,11 @@ export class JobAdComponent implements OnInit {
   private jobAdQuery: Subscription = new Subscription();
 
   data: any = {};
+  dataLength = 0;
   loading = false;
   errors: any;
   jobAds: any = [];
+  j = 0;
 
   constructor(private apollo: Apollo) {}
 
@@ -29,82 +31,14 @@ export class JobAdComponent implements OnInit {
         this.loading = result.loading;
         this.errors = result.errors;
         this.jobAds = this.data.jobAds;
+        this.dataLength = this.jobAds.length;
 
-        console.log(this.jobAds);
+        this.j = this.dataLength - 1;
       });
   }
 
-  jobAdArray: any = [
-    {
-      title: 'Anlagenmechaniker (m/w/d)',
-      subTitle: 'für Sanitär, Heizung und Klimatechnik',
-      fieldOfActivity: [
-        'Installation von Neubauten',
-        'Modernisierung von Altbauten',
-        'Installation und Instandhaltung von technischen Anlagen in der Kleinindustrie sowie öffentlichen Gebäuden',
-      ],
-      whatToBring: [
-        'Führerschein Klasse B',
-        'Stets freundlicher Umgang mit unseren Kunden',
-        'Zuverlässigkeit, Teamfähigkeit und ein hohes Maß an Leistungsbereitschaft',
-      ],
-      whatToExpect: [
-        'Eine familiäre Arbeitsatmosphäre in einem sympathische Team',
-        'Spannendes Aufgabenspektrum in einem inhabergeführten Betrieb',
-        'Eigenverantwortung für ihr Aufgabengebiet',
-        'Fachliche und persönliche Entwicklungsmöglichkeiten',
-        'Leistungsgerechte Vergütung',
-        'Festanstellung in Vollzeit',
-      ],
-    },
-    {
-      title: 'Meister (m/w/d)',
-      subTitle: 'für Sanitär, Heizung und Klimatechnik',
-      fieldOfActivity: [
-        'Installation von Neubauten',
-        'Modernisierung von Altbauten',
-        'Installation und Instandhaltung von technischen Anlagen in der Kleinindustrie sowie öffentlichen Gebäuden',
-      ],
-      whatToBring: [
-        'Führerschein Klasse B',
-        'Stets freundlicher Umgang mit unseren Kunden',
-        'Zuverlässigkeit, Teamfähigkeit und ein hohes Maß an Leistungsbereitschaft',
-      ],
-      whatToExpect: [
-        'Eine familiäre Arbeitsatmosphäre in einem sympathische Team',
-        'Spannendes Aufgabenspektrum in einem inhabergeführten Betrieb',
-        'Eigenverantwortung für ihr Aufgabengebiet',
-        'Fachliche und persönliche Entwicklungsmöglichkeiten',
-        'Leistungsgerechte Vergütung',
-        'Festanstellung in Vollzeit',
-      ],
-    },
-    {
-      title: 'Angehender Meister (m/w/d)',
-      subTitle: 'für Sanitär, Heizung und Klimatechnik',
-      fieldOfActivity: [
-        'Installation von Neubauten',
-        'Modernisierung von Altbauten',
-        'Installation und Instandhaltung von technischen Anlagen in der Kleinindustrie sowie öffentlichen Gebäuden',
-      ],
-      whatToBring: [
-        'Führerschein Klasse B',
-        'Stets freundlicher Umgang mit unseren Kunden',
-        'Zuverlässigkeit, Teamfähigkeit und ein hohes Maß an Leistungsbereitschaft',
-      ],
-      whatToExpect: [
-        'Eine familiäre Arbeitsatmosphäre in einem sympathische Team',
-        'Spannendes Aufgabenspektrum in einem inhabergeführten Betrieb',
-        'Eigenverantwortung für ihr Aufgabengebiet',
-        'Fachliche und persönliche Entwicklungsmöglichkeiten',
-        'Leistungsgerechte Vergütung',
-        'Festanstellung in Vollzeit',
-      ],
-    },
-  ];
-
   @ViewChild('slide') slide: any;
-  j = this.jobAdArray.length - 1;
+
   i = 0;
 
   next() {
@@ -114,11 +48,11 @@ export class JobAdComponent implements OnInit {
       this.slide.nativeElement.style.top = this.i + 'vh';
     }
 
-    console.log(this.jobAdArray.length);
+    console.log(this.j);
   }
 
   prev() {
-    if (this.j !== this.jobAdArray.length - 1) {
+    if (this.j !== this.jobAds.length - 1) {
       this.j++;
       this.i = this.i + 75;
       this.slide.nativeElement.style.top = this.i + 'vh';

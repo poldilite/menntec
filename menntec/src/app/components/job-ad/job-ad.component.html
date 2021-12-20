@@ -1,4 +1,4 @@
-<section class="jobAd" *ngIf="jobAdArray.length > 0">
+<section class="jobAd" *ngIf="jobAds.length > 0">
   <div class="inner">
     <div class="jobAd-slider">
       <div class="jobAd-slider__main">
@@ -79,7 +79,7 @@
             type="button"
             class="btn btn-primary btn-jobAd btn-jobAd--next bold txt-gray"
             (click)="next()"
-            *ngIf="j !== 0"
+            *ngIf="j >= 0"
           >
             Nächste Anzeige
           </button>
