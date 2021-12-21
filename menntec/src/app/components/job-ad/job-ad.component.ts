@@ -37,15 +37,20 @@ export class JobAdComponent implements OnInit {
         this.data = result.data;
         this.loading = result.loading;
         this.errors = result.errors;
-        this.jobAds = this.data.jobAds;
+        this.jobAds = this.data.jobAdPage.jobAdRelation.job_ads;
         this.dataLength = this.jobAds.length;
 
         this.bannerText1 = this.jobAds[0].bannerText1;
         this.bannerText2 = this.jobAds[0].bannerText2;
 
-        this.jobContactFirstName = this.jobAds[0].contact.firstName;
-        this.jobContactLastName = this.jobAds[0].contact.lastName;
-        this.jobContactEMail = this.jobAds[0].contact.email;
+        this.jobContactFirstName =
+          this.data.jobAdPage.jobAdRelation.contact.firstName;
+        this.jobContactLastName =
+          this.data.jobAdPage.jobAdRelation.contact.lastName;
+        this.jobContactEMail = this.data.jobAdPage.jobAdRelation.contact.email;
+        this.jobContactTel = this.data.jobAdPage.jobAdRelation.contact.phone;
+
+        console.log(this.jobAds);
 
         this.j = this.dataLength - 1;
       });

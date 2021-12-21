@@ -20,12 +20,8 @@
                   <h3 class="jobAd__content__title">Aufgabengebiet</h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li
-                        *ngFor="
-                          let item of jobAd.jobDetails.whatYouWillBeDoingList
-                        "
-                      >
-                        {{ item.whatYouWillBeDoingText }}
+                      <li *ngFor="let item of jobAd.jobSpecs.jobTasks">
+                        {{ item.text }}
                       </li>
                     </ul>
                   </div>
@@ -36,12 +32,8 @@
                   </h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li
-                        *ngFor="
-                          let item of jobAd.jobDetails.whatWeExpectFromYouList
-                        "
-                      >
-                        {{ item.whatWeExpectFromYouText }}
+                      <li *ngFor="let item of jobAd.jobSpecs.jobPrerequisites">
+                        {{ item.text }}
                       </li>
                     </ul>
                   </div>
@@ -52,12 +44,8 @@
                   </h3>
                   <div class="jobAd__content__text">
                     <ul>
-                      <li
-                        *ngFor="
-                          let item of jobAd.jobDetails.whatToExpectFromUsList
-                        "
-                      >
-                        {{ item.whatToExpectFromUsText }}
+                      <li *ngFor="let item of jobAd.jobSpecs.jobBenefits">
+                        {{ item.text }}
                       </li>
                     </ul>
                   </div>
