@@ -27,6 +27,7 @@ import {
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialMediaComponent } from './components/social-media/social-media.component';
+import { AccordionModule } from './accordion/accordion.module';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -79,6 +80,7 @@ const cookieConfig: NgcCookieConsentConfig = {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AccordionModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
