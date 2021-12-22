@@ -20,6 +20,74 @@
   @include for-size(tablet-landscape-up)
     background: linear-gradient($clr-accent, $clr-secondary)
 
+  &__slider
+
+    &__main
+      position: absolute
+      width: 90%
+      left: 50%
+      transform: translateX(-50%)
+
+      @include for-size(tablet-portrait-up)
+        width: 80%
+
+    &__box
+      position: relative
+      height: 75vh
+      width: 100%
+      border-radius: 4px
+      background: #fff
+      overflow: hidden
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+
+      &::after
+        content: ''
+        position: absolute
+        top: -50px
+        left: -50px
+        height: 100px
+        width: 100px
+        border-radius: 50%
+        z-index: 1
+
+    &__banner
+      background: $clr-accent
+      padding: 1rem 5rem 1rem 2rem
+      color: $clr-primary
+      font-weight: $fw-semibold
+      position: absolute
+      width: 50rem
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+      transform: rotate(-5deg)
+      transform: skewY(-5deg)
+
+      & a
+        color: $clr-primary
+
+      &--up
+        top: 5rem
+        z-index: 99
+        right: -33rem
+
+      &--down
+        top: 7.7rem
+        z-index: 90
+        right: -33.5rem
+        background: darken($clr-accent, 10%)
+
+        @include for-size(tablet-portrait-up)
+          top: 8rem
+
+    &__cards
+      padding: 20px
+      height: 75vh
+      overflow-anchor: auto
+
+    &__ad
+      width: 100px
+      height: 100px
+      display: inline-block
+
   &__subTitle
     padding-bottom: .75rem
 
@@ -35,39 +103,34 @@
     background: $clr-accent
     color: $clr-primary
     font-weight: $fw-semibold
-    font-size: .825rem
+    font-size: .725rem
     z-index: 2000
+    padding: .75rem
     position: absolute
-    bottom: 0
-    padding: 1rem 1.5rem
+    bottom: -10.75rem
+    width: 100%
+    transition: all .3s ease-in-out
 
-    & p
+    @include for-size(tablet-portrait-up)
+      bottom: 0
+      padding: 1rem 1.5rem
+      font-size: .825rem
+
+    &-actv
+      bottom: 0
+
+    &__button
+      text-align: center
+      bottom: 0
+      left: 0
+      width: 100%
+      cursor: pointer
+
+    &__text
       margin: .5rem 0
 
-  &__banner
-    background: $clr-accent
-    padding: 1rem 5rem 1rem 2rem
-    color: $clr-primary
-    font-weight: $fw-semibold
-    position: absolute
-    width: 50rem
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
-    transform: rotate(-5deg)
-    transform: skewY(-5deg)
-
-    & a
-      color: $clr-primary
-
-    &--up
-      top: 5rem
-      z-index: 99
-      right: -33rem
-
-    &--down
-      top: 8rem
-      z-index: 90
-      right: -33.5rem
-      background: darken($clr-accent, 10%)
+      &:last-of-type
+        margin-bottom: 0
 
   &__btns
     padding: 1rem
@@ -76,47 +139,11 @@
     left: 50%
     transform: translateX(-50%)
     display: grid
-    width: 45rem
+    width: 22rem
     grid-template-columns: 1fr 1fr
 
-.jobAd-slider
-  width: 80%
-
-  &__main
-    position: absolute
-    width: 80%
-    left: 50%
-    transform: translateX(-50%)
-
-  &__box
-    position: relative
-    height: 75vh
-    width: 100%
-    border-radius: 4px
-    background: #fff
-    overflow: hidden
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
-
-    &::after
-      content: ''
-      position: absolute
-      top: -50px
-      left: -50px
-      height: 100px
-      width: 100px
-      border-radius: 50%
-      z-index: 1
-
-  &__cards
-    padding: 20px
-    height: 75vh
-
-  &__ad
-    width: 100px
-    height: 100px
-    display: inline-block
-
-  &__button
+    @include for-size(tablet-portrait-up)
+      width: 45rem
 
 #slide
   position: absolute

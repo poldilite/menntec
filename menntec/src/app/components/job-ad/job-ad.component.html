@@ -1,16 +1,16 @@
 <section class="jobAd" *ngIf="j >= 0">
   <div class="inner">
-    <div class="jobAd-slider">
-      <div class="jobAd-slider__main">
-        <div class="jobAd-slider__box">
-          <div class="jobAd__banner jobAd__banner--up">
+    <div class="jobAd__slider">
+      <div class="jobAd__slider__main">
+        <div class="jobAd__slider__box">
+          <div class="jobAd__slider__banner jobAd__slider__banner--up">
             {{ bannerText1 }}
           </div>
-          <div class="jobAd__banner jobAd__banner--down">
+          <div class="jobAd__slider__banner jobAd__slider__banner--down">
             {{ bannerText2 }}
           </div>
-          <div class="jobAd-slider__slide" id="slide" #slide>
-            <div class="jobAd-slider__cards" *ngFor="let jobAd of jobAds">
+          <div class="jobAd__slider__slide" id="slide" #slide>
+            <div class="jobAd__slider__cards" *ngFor="let jobAd of jobAds">
               <h2 class="jobAd__title">{{ jobAd.jobTitle }}</h2>
               <h4 class="jobAd__subTitle">
                 {{ jobAd.jobTitleSubtext }}
@@ -42,7 +42,7 @@
                   <h3 class="jobAd__content__title">
                     Was Sie von uns erwarten dürfen
                   </h3>
-                  <div class="jobAd__content__text">
+                  <div class="jobAd__content__text" id="anchortest">
                     <ul>
                       <li *ngFor="let item of jobAd.jobSpecs.jobBenefits">
                         {{ item.text }}
@@ -53,18 +53,25 @@
               </div>
             </div>
           </div>
-          <div class="jobAd__cta">
-            <p>
-              Wir haben Ihr Interesse geweckt? Dann freuen wir uns auf Ihre
-              aussagekräftige Bewerbung per Post oder per eMail.
-            </p>
-            <p>
-              Ansprechpartner: {{ jobContactFirstName }}
-              {{ jobContactLastName }} | {{ jobContactEMail }} | Tel.: +49 177
-              3136260
-              <br />
-              Postanschrift: Am Grünen Weg 23, 52385 Nideggen
-            </p>
+          <div
+            class="jobAd__cta"
+            [ngClass]="ctaStatus ? 'jobAd__cta-actv' : ''"
+          >
+            <div class="jobAd__cta__button" (click)="collapseCTA()">
+              Wir haben Ihr Interesse geweckt?
+            </div>
+            <div class="jobAd__cta__content">
+              <p class="jobAd__cta__text">
+                {{ ctaText }}
+              </p>
+              <p class="jobAd__cta__text">
+                Ansprechpartner:<br />
+                {{ jobContactFirstName }} {{ jobContactLastName }} |
+                {{ jobContactEMail }} | Tel.: +49 177 3136260
+                <br />
+                Postanschrift: Am Grünen Weg 23, 52385 Nideggen
+              </p>
+            </div>
           </div>
         </div>
         <div class="jobAd__btns">

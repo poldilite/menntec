@@ -26,14 +26,18 @@
       background: $clr-primary
 
   &-jobAd
-    width: 80%
-    min-width: 10rem
+    width: 50%
+    min-width: 9.5rem
     border: 0
     padding: 0
     line-height: 2em
     background: rgba($clr-accent, .8)
     color: $clr-primary
     position: relative
+
+    @include for-size(tablet-portrait-up)
+      min-width: 10rem
+      width: 80%
 
     &::before
       content: ''

@@ -1,3 +1,4 @@
+import { hyphenateSync } from 'hyphen/de';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
@@ -17,6 +18,7 @@ export class JobAdComponent implements OnInit {
   errors: any;
   jobAds: any = [];
   j = 0;
+  o = 0;
   bannerText1 = '';
   bannerText2 = '';
 
@@ -24,6 +26,10 @@ export class JobAdComponent implements OnInit {
   jobContactLastName = '';
   jobContactEMail = '';
   jobContactTel = '';
+
+  ctaText = hyphenateSync(
+    'Dann freuen wir uns auf Ihre aussagekräftige Bewerbung per Post oder per eMail.'
+  );
 
   constructor(private apollo: Apollo) {}
 
@@ -80,5 +86,12 @@ export class JobAdComponent implements OnInit {
       this.bannerText1 = this.jobAds[this.j - 1].bannerText1;
       this.bannerText2 = this.jobAds[this.j - 1].bannerText2;
     }
+  }
+
+  ctaStatus = false;
+
+  collapseCTA() {
+    this.ctaStatus = !this.ctaStatus;
+    console.log(this.ctaStatus);
   }
 }

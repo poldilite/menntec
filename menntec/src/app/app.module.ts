@@ -32,7 +32,7 @@ const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
     domain: 'menntec.de',
   },
-  position: 'bottom-right',
+  position: 'bottom',
   theme: 'classic',
   palette: {
     popup: {
