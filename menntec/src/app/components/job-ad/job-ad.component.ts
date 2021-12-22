@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { JOBADS_QUERY } from '../../apollo/queries';
+import { Platform } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-job-ad',
@@ -31,7 +32,11 @@ export class JobAdComponent implements OnInit {
     'Dann freuen wir uns auf Ihre aussagekräftige Bewerbung per Post oder per eMail.'
   );
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, public platform: Platform) {
+    if (this.platform.IOS) {
+      console.log('IOS Device');
+    }
+  }
 
   ngOnInit(): void {
     this.loading = true;

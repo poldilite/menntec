@@ -28,6 +28,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialMediaComponent } from './components/social-media/social-media.component';
 import { AccordionModule } from './accordion/accordion.module';
+import { PlatformModule } from '@angular/cdk/platform';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -88,6 +89,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     NgcCookieConsentModule.forRoot(cookieConfig),
     GraphQLModule,
     HttpClientModule,
+    PlatformModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
