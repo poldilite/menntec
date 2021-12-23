@@ -1,9 +1,11 @@
 import { hyphenateSync } from 'hyphen/de';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { JOBADS_QUERY } from '../../apollo/queries';
 import { Platform } from '@angular/cdk/platform';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-job-ad',
@@ -11,6 +13,8 @@ import { Platform } from '@angular/cdk/platform';
   styleUrls: ['./job-ad.component.sass'],
 })
 export class JobAdComponent implements OnInit {
+  @ViewChild('slide') slide: any;
+
   private jobAdQuery: Subscription = new Subscription();
 
   data: any = {};
@@ -20,6 +24,7 @@ export class JobAdComponent implements OnInit {
   jobAds: any = [];
   j = 0;
   o = 0;
+  i = 0; // TODO: change to speaking variables
   bannerText1 = '';
   bannerText2 = '';
 
@@ -28,17 +33,37 @@ export class JobAdComponent implements OnInit {
   jobContactEMail = '';
   jobContactTel = '';
 
+  isDesktop$!: Observable<boolean>;
+  isMobile$!: Observable<boolean>;
+  isTablet$!: Observable<boolean>;
+
+  ctaStatus = false;
+
   ctaText = hyphenateSync(
     'Dann freuen wir uns auf Ihre aussagekräftige Bewerbung per Post oder per eMail.'
   );
 
-  constructor(private apollo: Apollo, public platform: Platform) {
-    if (this.platform.IOS) {
-      console.log('IOS Device');
-    }
-  }
+  constructor(
+    private apollo: Apollo,
+    public platform: Platform,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
+    this.isDesktop$ = this.breakpointObserver
+      .observe([Breakpoints.Web])
+      .pipe(map(({ matches }) => matches));
+
+    this.isMobile$ = this.breakpointObserver
+      .observe([Breakpoints.HandsetPortrait])
+      .pipe(map(({ matches }) => matches));
+
+    this.isTablet$ = this.breakpointObserver
+      .observe([Breakpoints.Tablet])
+      .pipe(map(({ matches }) => matches));
+
+    console.log(this.isTablet$);
+
     this.loading = true;
     this.jobAdQuery = this.apollo
       .watchQuery({
@@ -67,11 +92,7 @@ export class JobAdComponent implements OnInit {
       });
   }
 
-  @ViewChild('slide') slide: any;
-
-  i = 0;
-
-  next() {
+  next(): void {
     if (this.j !== 0) {
       this.j--;
       this.i = this.i - 75;
@@ -82,7 +103,7 @@ export class JobAdComponent implements OnInit {
     }
   }
 
-  prev() {
+  prev(): void {
     if (this.j !== this.jobAds.length - 1) {
       this.j++;
       this.i = this.i + 75;
@@ -93,9 +114,7 @@ export class JobAdComponent implements OnInit {
     }
   }
 
-  ctaStatus = false;
-
-  collapseCTA() {
+  collapseCTA(): void {
     this.ctaStatus = !this.ctaStatus;
     console.log(this.ctaStatus);
   }

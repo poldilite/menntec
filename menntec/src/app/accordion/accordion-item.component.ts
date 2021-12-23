@@ -45,7 +45,7 @@ export class AccordionItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  toggle() {
+  toggle(): void {
     this.showBody = !this.showBody;
   }
 }
