@@ -3,7 +3,7 @@
     <div class="jobAd__slider">
       <div class="jobAd__slider__main">
         <div class="jobAd__slider__box">
-          <ng-container *ngIf="isDesktop$ && isTablet$ | async">
+          <ng-container *ngIf="isDesktop$ || isTablet$ | async">
             <div class="jobAd__slider__banner jobAd__slider__banner--up">
               {{ bannerText1 }}
             </div>
@@ -15,7 +15,7 @@
             <div class="jobAd__slider__cards" *ngFor="let jobAd of jobAds">
               <h2 class="jobAd__title">
                 <!-- {{ jobAd.jobTitle | hyphenate }}  -->
-                {{ isDesktop$ && isTablet$ | async }}
+                {{ isDesktop$ || isTablet$ | async }}
               </h2>
               <h4 class="jobAd__subTitle">
                 {{ jobAd.jobTitleSubtext | hyphenate }}
