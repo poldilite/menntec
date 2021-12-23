@@ -3,19 +3,22 @@
     <div class="jobAd__slider">
       <div class="jobAd__slider__main">
         <div class="jobAd__slider__box">
-          <ng-container *ngIf="isDesktop$ || isTablet$ | async">
+          <ng-container *ngIf="isDesktop$ && isTablet$ | async">
             <div class="jobAd__slider__banner jobAd__slider__banner--up">
               {{ bannerText1 }}
             </div>
             <div class="jobAd__slider__banner jobAd__slider__banner--down">
-              {{ bannerText2 }}
+              <!-- {{ bannerText2 }} -->
             </div>
           </ng-container>
           <div class="jobAd__slider__slide" id="slide" #slide>
             <div class="jobAd__slider__cards" *ngFor="let jobAd of jobAds">
-              <h2 class="jobAd__title">{{ jobAd.jobTitle }}</h2>
+              <h2 class="jobAd__title">
+                <!-- {{ jobAd.jobTitle | hyphenate }}  -->
+                {{ isDesktop$ && isTablet$ | async }}
+              </h2>
               <h4 class="jobAd__subTitle">
-                {{ jobAd.jobTitleSubtext }}
+                {{ jobAd.jobTitleSubtext | hyphenate }}
               </h4>
               <div class="jobAd__content">
                 <ng-container *ngIf="isMobile$ | async">
@@ -51,7 +54,7 @@
                     <div class="jobAd__content__text">
                       <ul>
                         <li *ngFor="let item of jobAd.jobSpecs.jobTasks">
-                          {{ item.text }}
+                          {{ item.text | hyphenate }}
                         </li>
                       </ul>
                     </div>
@@ -65,7 +68,7 @@
                         <li
                           *ngFor="let item of jobAd.jobSpecs.jobPrerequisites"
                         >
-                          {{ item.text }}
+                          {{ item.text | hyphenate }}
                         </li>
                       </ul>
                     </div>
@@ -77,7 +80,7 @@
                     <div class="jobAd__content__text">
                       <ul>
                         <li *ngFor="let item of jobAd.jobSpecs.jobBenefits">
-                          {{ item.text }}
+                          {{ item.text | hyphenate }}
                         </li>
                       </ul>
                     </div>

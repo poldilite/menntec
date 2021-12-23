@@ -5,13 +5,19 @@
 @import './../../assets/sass/buttons'
 
 .acc-header
-  border-bottom: 1px solid rgb(202, 202, 202)
-  min-height: 30px
+  border-radius: 4px
+  background: $clr-secondary
+  min-height: 1.5rem
   cursor: pointer
   display: flex
   flex-direction: row
   align-items: center
-  padding: 10px
+  padding: .5rem 1rem
+  margin-top: .25rem
+
+  &--showBody
+    border-bottom-left-radius: 0px
+    border-bottom-right-radius: 0px
 
 .headerTitle
   overflow-wrap: break-word
@@ -20,12 +26,15 @@
   font-weight: 600
 
 .acc-body
-  min-height: 30px
-  padding: 1rem 1.5rem
+  background: $clr-secondary
+  min-height: 1.5rem
+  padding: 0.75rem 1.5rem
   display: flex
   align-items: center
-  border-bottom: 1px solid #dcdcdc
-  font-size: $fs-mobile
+  font-size: .65rem
+  line-height: 1.05rem
+  border-bottom-left-radius: 4px
+  border-bottom-right-radius: 4px
 
 .arrow
-  font-size: 18px
+  font-size: 1rem

@@ -1,4 +1,8 @@
-<div class="acc-header" (click)="toggle()">
+<div
+  class="acc-header"
+  (click)="toggle()"
+  [ngClass]="showBody ? 'acc-header--showBody' : ''"
+>
   <div class="headerTitle">
     {{ title }}
   </div>

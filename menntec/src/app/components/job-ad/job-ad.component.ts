@@ -14,7 +14,6 @@ import { map } from 'rxjs/operators';
 })
 export class JobAdComponent implements OnInit {
   @ViewChild('slide') slide: any;
-
   private jobAdQuery: Subscription = new Subscription();
 
   data: any = {};
@@ -59,8 +58,12 @@ export class JobAdComponent implements OnInit {
       .pipe(map(({ matches }) => matches));
 
     this.isTablet$ = this.breakpointObserver
-      .observe([Breakpoints.Tablet])
+      .observe('(min-width: 768px)')
       .pipe(map(({ matches }) => matches));
+
+    if (this.breakpointObserver.isMatched('(min-width: 768px)')) {
+      console.log('TEST');
+    }
 
     console.log(this.isTablet$);
 
