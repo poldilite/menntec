@@ -27,6 +27,10 @@ import {
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialMediaComponent } from './components/social-media/social-media.component';
+import { AccordionModule } from './accordion/accordion.module';
+import { PlatformModule } from '@angular/cdk/platform';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HyphenatePipe } from './misc/hyphenate.pipe';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -75,10 +79,12 @@ const cookieConfig: NgcCookieConsentConfig = {
     CtaComponent,
     SocialMediaComponent,
     JobAdComponent,
+    HyphenatePipe,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AccordionModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -86,6 +92,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     NgcCookieConsentModule.forRoot(cookieConfig),
     GraphQLModule,
     HttpClientModule,
+    PlatformModule,
+    LayoutModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
