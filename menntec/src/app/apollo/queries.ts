@@ -58,6 +58,43 @@ export const DATASEC_QUERY = gql`
   }
 `;
 
+export const JOBADS_QUERY = gql`
+  query JobAdPage {
+    jobAdPage {
+      pageInfo {
+        heroTitle
+        heroText
+      }
+      jobAdRelation {
+        job_ads {
+          id
+          jobTitle
+          jobTitleSubtext
+          bannerText1
+          bannerText2
+          jobSpecs {
+            jobTasks {
+              text
+            }
+            jobBenefits {
+              text
+            }
+            jobPrerequisites {
+              text
+            }
+          }
+        }
+        contact {
+          firstName
+          lastName
+          email
+          phone
+        }
+      }
+    }
+  }
+`;
+
 export const INQUIRIES_MUTATION = gql`
   mutation Inquiries(
     $firstName: String!

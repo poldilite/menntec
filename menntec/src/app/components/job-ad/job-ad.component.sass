@@ -1,0 +1,152 @@
+
+@import './../../../assets/sass/var'
+@import './../../../assets/sass/mixins'
+@import './../../../assets/sass/buttons'
+
+.jobAd
+  background: linear-gradient($clr-accent, $clr-secondary)
+  overflow: hidden
+  display: block
+  min-height: 100vh
+  padding-top: 1rem
+  font-size: $fs-mobile
+
+  @include for-size(tablet-portrait-up)
+    background: linear-gradient(pink, $clr-secondary)
+    font-size: .825rem
+    padding-top: 2rem
+    position: relative
+
+  @include for-size(tablet-landscape-up)
+    background: linear-gradient($clr-accent, $clr-secondary)
+
+  &__slider
+
+    &__main
+      position: absolute
+      width: 90%
+      left: 50%
+      transform: translateX(-50%)
+
+      @include for-size(tablet-portrait-up)
+        width: 80%
+
+    &__box
+      position: relative
+      height: 75vh
+      width: 100%
+      background: #fff
+      overflow: hidden
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+
+      &::after
+        content: ''
+        position: absolute
+        top: -50px
+        left: -50px
+        height: 100px
+        width: 100px
+        border-radius: 50%
+        z-index: 1
+
+    &__banner
+      background: $clr-accent
+      padding: 1rem 5rem 1rem 2rem
+      color: $clr-primary
+      font-weight: $fw-semibold
+      position: absolute
+      width: 50rem
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+      transform: rotate(-5deg)
+      transform: skewY(-5deg)
+
+      & a
+        color: $clr-primary
+
+      &--up
+        top: 5rem
+        z-index: 99
+        right: -33rem
+
+      &--down
+        top: 7.7rem
+        z-index: 90
+        right: -33.5rem
+        background: darken($clr-accent, 10%)
+
+        @include for-size(tablet-portrait-up)
+          top: 8rem
+
+    &__cards
+      padding: 20px
+      height: 75vh
+      overflow-anchor: auto
+
+    &__ad
+      width: 100px
+      height: 100px
+      display: inline-block
+
+  &__subTitle
+    padding-bottom: .75rem
+
+  &__content
+
+    &__details
+      padding: .5rem 0rem 0.5rem 0rem
+
+    &__text
+      padding: 0rem 1rem
+
+  &__cta
+    background: $clr-accent
+    color: $clr-primary
+    font-weight: $fw-semibold
+    font-size: .725rem
+    z-index: 2000
+    padding: .75rem
+    position: absolute
+    bottom: -10.2rem
+    width: 100%
+    transition: all .3s ease-in-out
+
+    @include for-size(tablet-portrait-up)
+      bottom: 0
+      padding: 1rem 1.5rem
+      font-size: .825rem
+
+    &-actv
+      bottom: 0
+
+    &__button
+      text-align: center
+      bottom: 0
+      left: 0
+      width: 100%
+      cursor: pointer
+
+    &__text
+      margin: .5rem 0
+
+      &:last-of-type
+        margin-bottom: 0
+
+  &__btns
+    padding: 1rem
+    margin: 0
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    display: grid
+    width: 22rem
+    grid-template-columns: 1fr 1fr
+
+    @include for-size(tablet-portrait-up)
+      width: 45rem
+
+#slide
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  transition: .4s
