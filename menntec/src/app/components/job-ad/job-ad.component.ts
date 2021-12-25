@@ -4,7 +4,11 @@ import { Apollo } from 'apollo-angular';
 import { Observable, Subscription } from 'rxjs';
 import { JOBADS_QUERY } from '../../apollo/queries';
 import { Platform } from '@angular/cdk/platform';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -58,14 +62,18 @@ export class JobAdComponent implements OnInit {
       .pipe(map(({ matches }) => matches));
 
     this.isTablet$ = this.breakpointObserver
-      .observe('(min-width: 768px)')
+      .observe([Breakpoints.Tablet])
       .pipe(map(({ matches }) => matches));
 
-    if (this.breakpointObserver.isMatched('(min-width: 768px)')) {
-      console.log('TEST');
-    }
-
-    console.log(this.isTablet$);
+    this.breakpointObserver
+      .observe([Breakpoints.Tablet])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          console.log(state);
+        } else {
+          console.log('Not Table Size');
+        }
+      });
 
     this.loading = true;
     this.jobAdQuery = this.apollo
