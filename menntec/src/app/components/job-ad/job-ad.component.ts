@@ -115,13 +115,15 @@ export class JobAdComponent implements OnInit {
   }
 
   prev(): void {
+    console.log(this.j);
     if (this.j !== this.jobAds.length - 1) {
+      console.log(this.j);
       this.j++;
       this.i = this.i + 75;
       this.slide.nativeElement.style.top = this.i + 'vh';
 
-      this.bannerText1 = this.jobAds[this.j - 1].bannerText1;
-      this.bannerText2 = this.jobAds[this.j - 1].bannerText2;
+      this.bannerText1 = this.jobAds[this.j].bannerText1;
+      this.bannerText2 = this.jobAds[this.j].bannerText2;
     }
   }
 
