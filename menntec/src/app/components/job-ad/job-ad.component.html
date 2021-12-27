@@ -3,7 +3,7 @@
     <div class="jobAd__slider">
       <div class="jobAd__slider__main">
         <div class="jobAd__slider__box">
-          <ng-container *ngIf="(isDesktop$ | async) || (isTablet$ | async)">
+          <ng-container>
             <div class="jobAd__slider__banner jobAd__slider__banner--up">
               {{ bannerText1 }}
             </div>
@@ -25,7 +25,7 @@
                     <app-accordion-item title="Aufgabengebiet">
                       <ul>
                         <li *ngFor="let item of jobAd.jobSpecs.jobTasks">
-                          {{ item.text }}
+                          {{ item.text | hyphenate }}
                         </li>
                       </ul>
                     </app-accordion-item>
@@ -34,14 +34,14 @@
                         <li
                           *ngFor="let item of jobAd.jobSpecs.jobPrerequisites"
                         >
-                          {{ item.text }}
+                          {{ item.text | hyphenate }}
                         </li>
                       </ul>
                     </app-accordion-item>
                     <app-accordion-item title="Was Sie von uns erwarten dürfen">
                       <ul>
                         <li *ngFor="let item of jobAd.jobSpecs.jobBenefits">
-                          {{ item.text }}
+                          {{ item.text | hyphenate }}
                         </li>
                       </ul>
                     </app-accordion-item>
