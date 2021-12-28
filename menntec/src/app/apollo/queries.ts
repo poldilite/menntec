@@ -30,6 +30,8 @@ export const PRODUCTS_QUERY = gql`
     services {
       name
       description
+      new
+      exclusive
       image {
         name
         url

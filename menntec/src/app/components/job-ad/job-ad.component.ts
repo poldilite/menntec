@@ -26,7 +26,7 @@ export class JobAdComponent implements OnInit {
   errors: any;
   jobAds: any = [];
   j = 0;
-  o = 0;
+  currData = 0;
   i = 0; // TODO: change to speaking variables
   bannerText1 = '';
   bannerText2 = '';
@@ -97,8 +97,6 @@ export class JobAdComponent implements OnInit {
         this.jobContactEMail = this.data.jobAdPage.jobAdRelation.contact.email;
         this.jobContactTel = this.data.jobAdPage.jobAdRelation.contact.phone;
 
-        console.log(this.jobAds);
-
         this.j = this.dataLength - 1;
       });
   }
@@ -106,29 +104,32 @@ export class JobAdComponent implements OnInit {
   next(): void {
     if (this.j !== 0) {
       this.j--;
+      this.currData = this.dataLength - 1 - this.j;
+      console.log(this.currData);
+
       this.i = this.i - 75;
       this.slide.nativeElement.style.top = this.i + 'vh';
 
-      this.bannerText1 = this.jobAds[this.j + 1].bannerText1;
-      this.bannerText2 = this.jobAds[this.j + 1].bannerText2;
+      this.bannerText1 = this.jobAds[this.currData].bannerText1;
+      this.bannerText2 = this.jobAds[this.currData].bannerText2;
     }
   }
 
   prev(): void {
-    console.log(this.j);
     if (this.j !== this.jobAds.length - 1) {
-      console.log(this.j);
       this.j++;
+      this.currData = this.dataLength - 1 - this.j;
+      console.log(this.currData);
+
       this.i = this.i + 75;
       this.slide.nativeElement.style.top = this.i + 'vh';
 
-      this.bannerText1 = this.jobAds[this.j].bannerText1;
-      this.bannerText2 = this.jobAds[this.j].bannerText2;
+      this.bannerText1 = this.jobAds[this.currData].bannerText1;
+      this.bannerText2 = this.jobAds[this.currData].bannerText2;
     }
   }
 
   collapseCTA(): void {
     this.ctaStatus = !this.ctaStatus;
-    console.log(this.ctaStatus);
   }
 }
