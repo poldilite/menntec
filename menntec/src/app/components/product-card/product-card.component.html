@@ -2,6 +2,35 @@
   <a href="">
     <div class="product__card__inner">
       <div
+        class="product__card__inner__banner-box"
+        [ngClass]="{
+          'product__card__inner__banner-box--odd': oddEven,
+          'product__card__inner__banner-box--even': !oddEven
+        }"
+      >
+        <div
+          class="product__card__inner__banner-box__banner"
+          [ngClass]="{
+            'product__card__inner__banner--odd': oddEven,
+            'product__card__inner__banner--even': !oddEven
+          }"
+          *ngIf="product.new"
+        >
+          NEU
+        </div>
+        <div
+          class="product__card__inner__banner-box__banner"
+          [ngClass]="{
+            'product__card__inner__banner--odd': oddEven,
+            'product__card__inner__banner--even': !oddEven
+          }"
+          *ngIf="product.exclusive"
+        >
+          EXKLUSIV
+        </div>
+      </div>
+
+      <div
         class="product__card__content"
         [ngClass]="{
           'product__card__content--odd': oddEven,

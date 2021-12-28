@@ -24,7 +24,60 @@
     flex-wrap: wrap
     flex-direction: row
 
-    @include for-size(tablet-portrait-up)
+    &__banner-box
+      position: absolute
+      width: 100%
+      height: 100%
+      z-index: 3000
+
+      @include for-size(tablet-portrait-up)
+        width: 17.5rem
+        height: 15rem
+
+      &--even
+        @include for-size(tablet-portrait-up)
+          right: 7.5%
+
+      &--odd
+        @include for-size(tablet-portrait-up)
+          left: 7.5%
+
+      &__banner
+        position: absolute
+        right: 0
+        color: $clr-secondary
+        box-shadow: $box-shadow
+        padding: .5rem 1rem
+        font-size: .6rem
+        font-weight: $fw-bold
+        min-width: 8.5rem
+
+        @include for-size(tablet-portrait-up)
+          text-align: center
+          font-size: $fs-desktop
+          width: 5.75rem
+          height: 8rem
+
+        &:first-child
+          top: 45%
+          z-index: 9000
+          background: $clr-accent
+
+          @include for-size(tablet-portrait-up)
+            top: 0
+            left: 0
+            right: inherit
+
+        &:nth-child(2)
+          top: 51%
+          z-index: 8666
+          background: darken($clr-accent, 10%)
+
+          @include for-size(tablet-portrait-up)
+            top: 0
+            right: 0
+            left: inherit
+            background: $clr-accent
 
   &__content
     padding: 3.25rem 1.625rem
