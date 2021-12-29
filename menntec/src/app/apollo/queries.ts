@@ -27,7 +27,8 @@ export const CONTACTS_QUERY = gql`
 
 export const PRODUCTS_QUERY = gql`
   query Services {
-    services {
+    services(sort: "new:desc, id:asc") {
+      id
       name
       description
       new

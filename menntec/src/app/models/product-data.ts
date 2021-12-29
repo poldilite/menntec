@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Adapter } from '../misc/adapter';
 export class ProductData {
   constructor(
-    public id: string,
-    public name: string,
-    public description: string,
-    public imageURL: string,
-    public newService: boolean,
-    public exclusiveService: boolean,
-    public newAndExclusiveService: boolean
+    public id?: string,
+    public name?: string,
+    public description?: string,
+    public imageURL?: string,
+    public newService?: boolean,
+    public exclusiveService?: boolean,
+    public newAndExclusiveService?: boolean
   ) {}
 }
 

@@ -65,16 +65,6 @@ export class JobAdComponent implements OnInit {
       .observe([Breakpoints.Tablet])
       .pipe(map(({ matches }) => matches));
 
-    this.breakpointObserver
-      .observe([Breakpoints.Tablet])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          console.log(state);
-        } else {
-          console.log('Not Table Size');
-        }
-      });
-
     this.loading = true;
     this.jobAdQuery = this.apollo
       .watchQuery({
@@ -105,7 +95,6 @@ export class JobAdComponent implements OnInit {
     if (this.j !== 0) {
       this.j--;
       this.currData = this.dataLength - 1 - this.j;
-      console.log(this.currData);
 
       this.i = this.i - 75;
       this.slide.nativeElement.style.top = this.i + 'vh';

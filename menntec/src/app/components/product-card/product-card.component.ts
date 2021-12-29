@@ -38,7 +38,7 @@ export class ProductCardComponent implements OnInit {
         // tslint:disable-next-line: forin
         for (const index in this.products) {
           let newProduct = new ProductData();
-          newProduct.id = index;
+          newProduct.id = this.products[index].id;
           newProduct.name = this.products[index].name;
           newProduct.description = this.products[index].description;
           newProduct.imageURL = this.products[index].image.url;
@@ -51,8 +51,6 @@ export class ProductCardComponent implements OnInit {
 
           this.allProducts.push(newProduct);
         }
-
-        console.log(this.allProducts);
       });
   }
 }
