@@ -11,8 +11,8 @@
   display: flex
   flex-direction: row
   align-items: center
-  padding: .5rem 1rem
-  margin-top: .25rem
+  padding: .35rem .9rem
+  margin-top: .2rem
   position: relative
 
   &--showBody
@@ -23,7 +23,7 @@
       bottom: 0
       left: 50%
       transform: translateX(-50%)
-      width: calc( 100% - 2rem )
+      width: calc( 100% - 1.8rem )
       border-bottom: 1px solid $clr-tertiary
 
 .headerTitle
@@ -31,15 +31,19 @@
   overflow: auto
   width: 100%
   font-weight: 600
+  font-size: .85rem
 
 .acc-body
   background: $clr-secondary
   min-height: 1.5rem
-  padding: 0.75rem 1.5rem
+  padding: 0.45rem 1.75rem
   display: flex
   align-items: center
-  font-size: .65rem
-  line-height: 1.05rem
+  font-size: .6rem
+  letter-spacing: .08rem
+
+  @include for-size(tablet-portrait-up)
+    padding: 0.75rem 1.5rem
 
 .arrow
   font-size: 1rem

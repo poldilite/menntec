@@ -1,7 +1,9 @@
-import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Subscription, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { PRODUCTS_QUERY } from '../../apollo/queries';
+import { ProductData } from 'src/app/models/product-data';
 
 @Component({
   selector: 'app-product-card',
@@ -14,7 +16,9 @@ export class ProductCardComponent implements OnInit {
   data: any = {};
   loading = false;
   errors: any;
-  products: any = [];
+  products: any;
+
+  allProducts: Array<ProductData> = [];
 
   constructor(private apollo: Apollo) {}
 
@@ -30,6 +34,23 @@ export class ProductCardComponent implements OnInit {
         this.errors = result.errors;
 
         this.products = this.data.services;
+
+        // tslint:disable-next-line: forin
+        for (const index in this.products) {
+          let newProduct = new ProductData();
+          newProduct.id = this.products[index].id;
+          newProduct.name = this.products[index].name;
+          newProduct.description = this.products[index].description;
+          newProduct.imageURL = this.products[index].image.url;
+          newProduct.newService = this.products[index].new;
+          newProduct.exclusiveService = this.products[index].exclusive;
+
+          if (this.products[index].new && this.products[index].exclusive) {
+            newProduct.newAndExclusiveService = true;
+          }
+
+          this.allProducts.push(newProduct);
+        }
       });
   }
 }
