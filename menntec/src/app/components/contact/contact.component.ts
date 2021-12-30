@@ -27,10 +27,12 @@ export class ContactComponent implements OnInit {
       'service_5j7ihj9',
       'template_00v3qn1',
       {
-        from_name: 'fdffdf',
+        from_fName: this.contactData.firstName,
+        from_lName: this.contactData.lastName,
         to_name: 'fdfads',
-        message: 'pdf',
-        reply_to: 'dfasdf',
+        message: this.contactData.message,
+        reply_to: this.contactData.eMail,
+        tel_number: this.contactData.tel,
       },
       'user_9tgvdBnOJBNGB0BGccoss'
     );
