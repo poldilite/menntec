@@ -16,6 +16,7 @@ import { ImprintComponent } from './pages/imprint/imprint.component';
 import { DatasecComponent } from './pages/datasec/datasec.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { QuoteComponent } from './components/quote/quote.component';
+import { JobAdComponent } from './components/job-ad/job-ad.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CtaComponent } from './components/cta/cta.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -26,12 +27,16 @@ import {
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialMediaComponent } from './components/social-media/social-media.component';
+import { AccordionModule } from './accordion/accordion.module';
+import { PlatformModule } from '@angular/cdk/platform';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HyphenatePipe } from './misc/hyphenate.pipe';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
     domain: 'menntec.de',
   },
-  position: 'bottom-right',
+  position: 'bottom',
   theme: 'classic',
   palette: {
     popup: {
@@ -73,10 +78,13 @@ const cookieConfig: NgcCookieConsentConfig = {
     QuoteComponent,
     CtaComponent,
     SocialMediaComponent,
+    JobAdComponent,
+    HyphenatePipe,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AccordionModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -84,6 +92,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     NgcCookieConsentModule.forRoot(cookieConfig),
     GraphQLModule,
     HttpClientModule,
+    PlatformModule,
+    LayoutModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
