@@ -1,5 +1,5 @@
 <section class="jobAd" *ngIf="j >= 0">
-  <div class="inner">
+  <div class="inner-wide">
     <div class="jobAd__slider">
       <div class="jobAd__slider__main">
         <div class="jobAd__slider__box">
@@ -103,7 +103,11 @@
               <p class="jobAd__cta__text">
                 Ansprechpartner:<br />
                 {{ jobContactFirstName }} {{ jobContactLastName }} |
-                {{ jobContactEMail }} | <br />
+                <a href="mailto:{{ jobContactEMail }}?subject=Bewerbung {{ jobTitle }}">{{
+                  jobContactEMail
+                }}</a>
+                |
+                <br />
                 Tel.: +49 177 3136260
                 <br />
                 Postanschrift:

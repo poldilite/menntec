@@ -35,6 +35,7 @@ export class JobAdComponent implements OnInit {
   jobContactLastName = '';
   jobContactEMail = '';
   jobContactTel = '';
+  jobTitle = '';
 
   isDesktop$!: Observable<boolean>;
   isMobile$!: Observable<boolean>;
@@ -80,6 +81,8 @@ export class JobAdComponent implements OnInit {
         this.bannerText1 = this.jobAds[0].bannerText1;
         this.bannerText2 = this.jobAds[0].bannerText2;
 
+        this.jobTitle = this.jobAds[0].jobTitle;
+
         this.jobContactFirstName =
           this.data.jobAdPage.jobAdRelation.contact.firstName;
         this.jobContactLastName =
@@ -101,6 +104,8 @@ export class JobAdComponent implements OnInit {
 
       this.bannerText1 = this.jobAds[this.currData].bannerText1;
       this.bannerText2 = this.jobAds[this.currData].bannerText2;
+
+      this.jobTitle = this.jobAds[this.currData].jobTitle;
     }
   }
 
@@ -115,6 +120,8 @@ export class JobAdComponent implements OnInit {
 
       this.bannerText1 = this.jobAds[this.currData].bannerText1;
       this.bannerText2 = this.jobAds[this.currData].bannerText2;
+
+      this.jobTitle = this.jobAds[this.currData].jobTitle;
     }
   }
 

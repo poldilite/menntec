@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   NgcCookieConsentService,
@@ -23,7 +24,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private revokeChoiceSubscription: Subscription = new Subscription();
   private noCookieLawSubscription: Subscription = new Subscription();
 
-  constructor(private ccService: NgcCookieConsentService) {}
+  constructor(
+    private ccService: NgcCookieConsentService,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
