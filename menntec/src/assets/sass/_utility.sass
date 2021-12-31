@@ -66,6 +66,23 @@
     content: ''
     display: table
 
+.inner-wide
+  width: 100%
+  max-width: 90rem
+  margin: 0 auto
+  position: relative
+
+  @include for-size(tablet-portrait-up)
+    width: 98%
+
+  &::after
+    clear: both
+
+  &::before,
+  &::after
+    content: ''
+    display: table
+
 .wrapper
   padding: 1.5rem 2.5rem
   min-height: 25rem

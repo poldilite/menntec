@@ -12,7 +12,7 @@
 
   @include for-size(tablet-portrait-up)
     background: linear-gradient($clr-accent, $clr-secondary)
-    font-size: .825rem
+    font-size: .775rem
     padding-top: 2rem
     position: relative
     min-height: 100vh
@@ -70,7 +70,7 @@
         color: $clr-primary
 
       &--up
-        top: 3rem
+        top: 3.25rem
         z-index: 99
         right: 0
         width: 10.5rem
@@ -83,7 +83,7 @@
           top: 5rem
 
       &--down
-        top: 4.7rem
+        top: 5rem
         z-index: 90
         right: 0
         width: 10.25rem
@@ -114,7 +114,7 @@
       font-size: 2.45rem
 
     @include for-size(desktop-up)
-      font-size: $fs-h2
+      font-size: 2.9rem
 
   &__subTitle
     padding-bottom: .35rem
@@ -163,6 +163,9 @@
       bottom: 0
       padding: 1rem 1.5rem
       font-size: .825rem
+
+    & a
+      color: $clr-primary
 
     &__content
       height: 9rem
