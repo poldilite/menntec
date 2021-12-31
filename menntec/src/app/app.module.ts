@@ -30,6 +30,7 @@ import { SocialMediaComponent } from './components/social-media/social-media.com
 import { AccordionModule } from './accordion/accordion.module';
 import { PlatformModule } from '@angular/cdk/platform';
 import { LayoutModule } from '@angular/cdk/layout';
+
 import { HyphenatePipe } from './misc/hyphenate.pipe';
 
 const cookieConfig: NgcCookieConsentConfig = {
