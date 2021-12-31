@@ -27,9 +27,12 @@ export const CONTACTS_QUERY = gql`
 
 export const PRODUCTS_QUERY = gql`
   query Services {
-    services {
+    services(sort: "new:desc, id:asc") {
+      id
       name
       description
+      new
+      exclusive
       image {
         name
         url
@@ -54,6 +57,73 @@ export const DATASEC_QUERY = gql`
       title
       dataPrivacyText
       heroTitle
+    }
+  }
+`;
+
+export const JOBADS_QUERY = gql`
+  query JobAdPage {
+    jobAdPage {
+      pageInfo {
+        heroTitle
+        heroText
+      }
+      jobAdRelation {
+        job_ads {
+          id
+          jobTitle
+          jobTitleSubtext
+          bannerText1
+          bannerText2
+          jobSpecs {
+            jobTasks {
+              text
+            }
+            jobBenefits {
+              text
+            }
+            jobPrerequisites {
+              text
+            }
+          }
+        }
+        contact {
+          firstName
+          lastName
+          email
+          phone
+        }
+      }
+    }
+  }
+`;
+
+export const INQUIRIES_MUTATION = gql`
+  mutation Inquiries(
+    $firstName: String!
+    $lastName: String!
+    $phone: String
+    $email: String!
+    $message: String!
+  ) {
+    createIquiry(
+      input: {
+        data: {
+          firstName: $firstName
+          lastName: $lastName
+          phone: $phone
+          email: $email
+          inquiryText: $message
+        }
+      }
+    ) {
+      iquiry {
+        firstName
+        lastName
+        phone
+        email
+        inquiryText
+      }
     }
   }
 `;

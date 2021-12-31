@@ -1,0 +1,49 @@
+@import url('https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css')
+
+@import './../../assets/sass/var'
+@import './../../assets/sass/mixins'
+@import './../../assets/sass/buttons'
+
+.acc-header
+  background: $clr-secondary
+  min-height: 1.5rem
+  cursor: pointer
+  display: flex
+  flex-direction: row
+  align-items: center
+  padding: .35rem .9rem
+  margin-top: .2rem
+  position: relative
+
+  &--showBody
+
+    &::after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+      width: calc( 100% - 1.8rem )
+      border-bottom: 1px solid $clr-tertiary
+
+.headerTitle
+  overflow-wrap: break-word
+  overflow: auto
+  width: 100%
+  font-weight: 600
+  font-size: .85rem
+
+.acc-body
+  background: $clr-secondary
+  min-height: 1.5rem
+  padding: 0.45rem 1.75rem
+  display: flex
+  align-items: center
+  font-size: .65rem
+  letter-spacing: .03rem
+
+  @include for-size(tablet-portrait-up)
+    padding: 0.75rem 1.5rem
+
+.arrow
+  font-size: 1rem
