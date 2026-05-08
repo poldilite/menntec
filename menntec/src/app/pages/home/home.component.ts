@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {
-    this.loading = true;
+    this.loading = false;
     this.homeQry = this.apollo
       .watchQuery({
         query: HOMEPAGE_DATA_QUERY,
@@ -49,8 +49,10 @@ export class HomeComponent implements OnInit {
         this.loading = result.loading;
         this.errors = result.errors;
 
-        this.heroText = hyphenateSync(this.data.homepage.heroText);
-        this.descriptionText = this.data.homepage.descriptionText;
+        if (this.data.homepage) {
+          this.heroText = hyphenateSync(this.data.homepage.heroText);
+          this.descriptionText = this.data.homepage.descriptionText;
+        }
       });
   }
 }
