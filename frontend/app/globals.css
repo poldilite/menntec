@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #2c2c2c;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Typography */
+h1 {
+  @apply text-h1;
+}
+
+h2 {
+  @apply text-h2;
+}
+
+h3 {
+  @apply text-h3;
+}
+
+h4 {
+  @apply text-h4;
+}
+
+h5 {
+  @apply text-h5;
+}
+
+p {
+  @apply text-body;
+}
+
+/* Smooth transitions */
+a {
+  @apply transition-colors duration-200;
+}
+
+button {
+  @apply transition-all duration-200;
+}
