@@ -31,6 +31,19 @@ docker-compose up
 
 ## Development Workflow
 
+### First Time Setup
+```bash
+# Copy environment example files
+cp cms/.env.example cms/.env.local
+cp frontend/.env.example frontend/.env.local
+
+# Start all services
+docker-compose up
+
+# In another terminal, seed mock data
+docker-compose exec cms npm run seed
+```
+
 ### Editing Content
 1. Go to http://localhost:3000
 2. Login with your CMS credentials
@@ -41,12 +54,27 @@ docker-compose up
 ```bash
 # Frontend code is in /frontend directory
 # Changes hot-reload automatically (Next.js dev server)
+# Pages and components:
+#   - /app/page.tsx (home page)
+#   - /app/services/ (services listing)
+#   - /app/jobs/ (job listings)
+#   - /app/kontakt/ (contact form)
+#   - /app/components/ (reusable components)
 ```
 
 ### Modifying CMS Schema
 ```bash
 # CMS code is in /cms directory
 # Payload CMS schema is in /cms/src/collections/
+# Collections available:
+#   - Homepage: Main hero section content
+#   - Services: Products/services listing
+#   - Contacts: Team member information
+#   - JobAds: Job postings
+#   - Pages: Dynamic CMS-managed pages
+#   - Media: Image uploads with responsive sizes
+#   - ContactInquiries: Form submissions
+#
 # Restart container after schema changes: docker-compose restart cms
 ```
 
