@@ -1,0 +1,83 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: menntec-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dev-password
+      POSTGRES_DB: menntec
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  cms:
+    build:
+      context: ./cms
+      dockerfile: Dockerfile.dev
+    container_name: menntec-cms
+    ports:
+      - "3002:3000"
+    environment:
+      DATABASE_URI: postgresql://postgres:dev-password@postgres:5432/menntec
+      PAYLOAD_SECRET: dev-secret-key-minimum-32-characters-long
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+      HOSTNAME: "0.0.0.0"
+      FRONTEND_URL: http://localhost:3003
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./cms/src:/app/src:cached
+      - ./cms/public:/app/public:cached
+      - ./cms/payload.config.ts:/app/payload.config.ts:cached
+      - ./cms/next.config.ts:/app/next.config.ts:cached
+      - ./cms/tsconfig.json:/app/tsconfig.json:cached
+      - ./cms/postcss.config.mjs:/app/postcss.config.mjs:cached
+      - cms_node_modules:/app/node_modules
+    restart: unless-stopped
+    command: ["npm", "run", "dev", "--", "--hostname", "0.0.0.0"]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: menntec-frontend
+    ports:
+      - "3003:3001"
+    environment:
+      NEXT_PUBLIC_CMS_URL: http://cms:3000
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+      HOSTNAME: "0.0.0.0"
+    depends_on:
+      - cms
+    volumes:
+      - ./frontend/app:/app/app:cached
+      - ./frontend/components:/app/components:cached
+      - ./frontend/lib:/app/lib:cached
+      - ./frontend/utils:/app/utils:cached
+      - ./frontend/public:/app/public:cached
+      - ./frontend/styles:/app/styles:cached
+      - ./frontend/next.config.ts:/app/next.config.ts:cached
+      - ./frontend/tailwind.config.ts:/app/tailwind.config.ts:cached
+      - ./frontend/postcss.config.mjs:/app/postcss.config.mjs:cached
+      - ./frontend/tsconfig.json:/app/tsconfig.json:cached
+      - frontend_node_modules:/app/node_modules
+    restart: unless-stopped
+    command: ["npm", "run", "dev", "--", "--hostname", "0.0.0.0"]
+
+volumes:
+  postgres_data:
+  cms_node_modules:
+  frontend_node_modules:
