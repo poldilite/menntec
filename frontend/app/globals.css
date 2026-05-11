@@ -16,31 +16,36 @@ body {
   background-color: #ffffff;
   color: #2c2c2c;
   font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.16rem;
+  font-weight: 400;
+  text-decoration: none;
+  list-style: none;
 }
 
-/* Typography */
+/* Typography — mobile-first, matches original SASS */
 h1 {
-  @apply text-h1;
+  font-size: 1.75rem;
 }
-
 h2 {
-  @apply text-h2;
+  font-size: 1.65rem;
 }
-
 h3 {
-  @apply text-h3;
+  font-size: 1.25rem;
 }
-
 h4 {
-  @apply text-h4;
+  font-size: 1.1rem;
 }
-
 h5 {
-  @apply text-h5;
+  font-size: 1.05rem;
+  color: #E95814;
 }
 
-p {
-  @apply text-body;
+@media (min-width: 768px) {
+  h1 { font-size: 3.25rem; line-height: 4.5rem; }
+  h2 { font-size: 3rem; }
+  h3 { font-size: 2.1rem; }
+  h4 { font-size: 1.45rem; }
+  h5 { font-size: 1.05rem; }
 }
 
 /* Smooth transitions */
@@ -50,4 +55,120 @@ a {
 
 button {
   @apply transition-all duration-200;
+}
+
+/* JobAds — section title (h3 inside job ad content, not the global h3 size) */
+.jobad-content-title {
+  font-size: 1.25rem; /* mobile: inherits global h3 mobile size */
+}
+@media (min-width: 768px) {
+  .jobad-content-title {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: 1200px) {
+  .jobad-content-title {
+    font-size: 2.1rem;
+  }
+}
+
+/* Accordion */
+.acc-header {
+  position: relative;
+}
+.acc-header--open::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 1.8rem);
+  border-bottom: 1px solid #D0D1D2;
+}
+
+/* JobAds CTA — max-height controls open/close (avoids overflow:hidden parent reliance) */
+.jobad-cta {
+  padding: .75rem;
+  font-size: .725rem;
+  letter-spacing: .08rem;
+  font-weight: 600;
+  max-height: 2.5rem;   /* closed: shows only button row */
+  overflow: hidden;
+  transition: max-height .3s ease-in-out;
+}
+@media (min-width: 1200px) {
+  .jobad-cta {
+    max-height: 15rem;  /* desktop: always fully open */
+    padding: 1rem 1.5rem;
+    font-size: .825rem;
+  }
+}
+/* open state — JS adds this class on click */
+.jobad-cta--open {
+  max-height: 15rem;
+}
+
+/* Inner container — matches Angular _utility.sass .inner */
+.inner {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .inner {
+    width: 95%;
+  }
+}
+
+/* Hamburger menu hover animations — ported from Angular */
+/* ease-in-out: smooth loop — 0% and 100% share the same value so the seam is invisible */
+@keyframes ham1 {
+  0%   { width: 1.56rem; }
+  25%  { width: 1.875rem; }
+  75%  { width: 0.45rem; }
+  100% { width: 1.56rem; }
+}
+@keyframes ham2 {
+  0%   { width: 1.875rem; }
+  50%  { width: 1.2rem; }
+  100% { width: 1.875rem; }
+}
+@keyframes ham3 {
+  0%   { width: 1rem; }
+  50%  { width: 1.875rem; }
+  100% { width: 1rem; }
+}
+
+/* transition on width catches the snap-back when hover ends → smooth exit */
+.menu-line-1,
+.menu-line-2,
+.menu-line-3 { transition: width 250ms ease; }
+
+/* hover: start animation from 0% = natural width → no jump on enter */
+.menu-btn:hover .menu-line-1 { animation: ham1 1.25s linear infinite; }
+.menu-btn:hover .menu-line-2 { animation: ham2 1.25s linear infinite; }
+.menu-btn:hover .menu-line-3 { animation: ham3 1.25s linear infinite; }
+
+/* Product card badge ribbon shape */
+@media (min-width: 768px) {
+  .badge-ribbon {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 88%, 0% 100%);
+  }
+}
+
+/* CTA content area heights */
+.jobad-cta-content {
+  height: 9rem;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .jobad-cta-content {
+    height: 7.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .jobad-cta-content {
+    height: 8.5rem;
+  }
 }

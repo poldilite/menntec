@@ -1,122 +1,116 @@
-import { Hero, Section, Grid, Card, Button } from './components';
-import { fetchHomepage, fetchServices, fetchContacts } from '@/lib/cms';
+import { Hero } from './components/Hero'
+import { Quote } from './components/Quote'
+import { JobAds } from './components/JobAds'
+import { Products } from './components/Products'
+import { About } from './components/About'
+import { CTA } from './components/CTA'
+import { Contact } from './components/Contact'
+import { CmsNotice } from './components/CmsNotice'
+import { fetchHomepage, fetchJobAds, fetchContacts, fetchCompanyInfo } from '@/lib/cms'
 
-export const revalidate = 60;
+export const revalidate = 0
 
-async function getHomeData() {
+const CMS_INTERNAL_URL = process.env.CMS_INTERNAL_URL || process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3002'
+
+function rewriteImageUrl(url: string): string {
+  // Replace whatever origin Payload reported with the Docker-internal URL
+  return url.replace(/^https?:\/\/[^/]+/, CMS_INTERNAL_URL)
+}
+
+async function getHomepageData() {
   try {
-    const [homepage, services, contacts] = await Promise.all([
+    const [homepage, jobsResult, contactsResult, companyInfo] = await Promise.all([
       fetchHomepage(),
-      fetchServices(),
+      fetchJobAds(),
       fetchContacts(),
-    ]);
+      fetchCompanyInfo(),
+    ])
+
+    const jobs = jobsResult?.docs || []
+    const contacts = contactsResult?.docs || []
+    const primaryContact = contacts[0] || null
+
+    const formattedJobs = jobs.map((job: any) => ({
+      id: job.id,
+      jobTitle: job.jobTitle,
+      jobSubtitle: job.jobTitleSubtext || '',
+      bannerText1: job.bannerText1 || '',
+      bannerText2: job.bannerText2 || '',
+      specs: {
+        tasks: job.jobTasks?.map((t: any) => t.text) || [],
+        prerequisites: job.jobPrerequisites?.map((p: any) => p.text) || [],
+        benefits: job.jobBenefits?.map((b: any) => b.text) || [],
+      },
+    }))
+
+    const formattedContacts = contacts.map((c: any) => ({
+      id: String(c.id),
+      firstName: c.firstName,
+      lastName: c.lastName,
+      title: c.title || '',
+      email: c.email,
+      xing: c.xing || undefined,
+      linkedin: c.linkedin || undefined,
+      image: c.image?.url ? { url: rewriteImageUrl(c.image.url) } : undefined,
+    }))
+
+    const hasContent = !!(homepage.heroText || jobs.length > 0 || contacts.length > 0)
+    const companyAddress = companyInfo
+      ? `${companyInfo.street}, ${companyInfo.zip} ${companyInfo.city}`
+      : ''
 
     return {
-      homepage: homepage?.docs?.[0],
-      services: services?.docs || [],
-      contacts: contacts?.docs || [],
-    };
-  } catch (error) {
-    console.error('Error fetching home data:', error);
+      cmsAvailable: hasContent,
+      heroText: homepage.heroText,
+      quoteText: homepage.quoteText,
+      ctaText: homepage.ctaText,
+      jobs: formattedJobs,
+      contacts: formattedContacts,
+      contactFirstName: primaryContact?.firstName || '',
+      contactLastName: primaryContact?.lastName || '',
+      contactEmail: primaryContact?.email || '',
+      contactPhone: primaryContact?.phone || '',
+      companyAddress,
+    }
+  } catch {
     return {
-      homepage: null,
-      services: [],
+      cmsAvailable: false,
+      heroText: 'Willkommen bei MennTEC',
+      quoteText: 'Qualität ist unser Anspruch.',
+      ctaText: 'Sie suchen nach einem starken Partner für Ihr Projekt? Kontaktieren Sie uns gerne über unser Kontaktformular.',
+      jobs: [],
       contacts: [],
-    };
+      contactFirstName: '',
+      contactLastName: '',
+      contactEmail: '',
+      contactPhone: '',
+      companyAddress: 'Am Grünen Weg 23, 52385 Nideggen',
+    }
   }
 }
 
 export default async function Home() {
-  const { homepage, services, contacts } = await getHomeData();
+  const { cmsAvailable, heroText, quoteText, ctaText, jobs, contacts, contactFirstName, contactLastName, contactEmail, contactPhone, companyAddress } = await getHomepageData()
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <Hero
-        title={homepage?.heroText || 'Willkommen bei MennTEC'}
-        subtitle={homepage?.descriptionText || 'Innovative Lösungen für digitale Herausforderungen'}
-        backgroundImage={homepage?.backgroundImage?.url}
-      >
-        <div className="flex gap-4 justify-center flex-wrap">
-          <Button href="/services">Unsere Services</Button>
-          <Button href="/kontakt" variant="outline">Kontakt aufnehmen</Button>
-        </div>
-      </Hero>
-
-      {/* Services Section */}
-      {services.length > 0 && (
-        <Section
-          title="Unsere Services"
-          subtitle="Wir bieten umfassende IT-Lösungen für Ihr Unternehmen"
-          backgroundColor="light"
-        >
-          <Grid columns={3}>
-            {services.map((service: any) => (
-              <Card
-                key={service.id}
-                title={service.name}
-                description={service.description}
-                image={service.image?.url}
-                imageAlt={service.image?.alt || service.name}
-                badge={service.exclusive ? 'Exklusiv' : service.new ? 'Neu' : undefined}
-              />
-            ))}
-          </Grid>
-        </Section>
+    <main>
+      {!cmsAvailable && <CmsNotice />}
+      <Hero text={heroText} />
+      <Quote text={quoteText} />
+      {jobs.length > 0 && (
+        <JobAds
+          jobAds={jobs}
+          contactFirstName={contactFirstName}
+          contactLastName={contactLastName}
+          contactEmail={contactEmail}
+          contactPhone={contactPhone}
+          companyAddress={companyAddress}
+        />
       )}
-
-      {/* Contacts Section */}
-      {contacts.length > 0 && (
-        <Section
-          title="Unser Team"
-          subtitle="Lernen Sie unsere Experten kennen"
-          centered
-          backgroundColor="white"
-        >
-          <Grid columns={4}>
-            {contacts.map((contact: any) => (
-              <Card
-                key={contact.id}
-                title={`${contact.firstName} ${contact.lastName}`}
-                description={contact.title}
-                image={contact.image?.url}
-                imageAlt={contact.image?.alt || `${contact.firstName} ${contact.lastName}`}
-              >
-                <div className="space-y-2 text-sm">
-                  {contact.email && (
-                    <p>
-                      <a href={`mailto:${contact.email}`} className="text-accent hover:underline">
-                        {contact.email}
-                      </a>
-                    </p>
-                  )}
-                  {contact.phone && (
-                    <p>
-                      <a href={`tel:${contact.phone}`} className="text-accent hover:underline">
-                        {contact.phone}
-                      </a>
-                    </p>
-                  )}
-                </div>
-              </Card>
-            ))}
-          </Grid>
-        </Section>
-      )}
-
-      {/* CTA Section */}
-      <Section
-        title="Lassen Sie uns zusammenarbeiten"
-        subtitle="Kontaktieren Sie uns heute für eine kostenlose Beratung"
-        centered
-        backgroundColor="accent"
-      >
-        <div className="flex justify-center gap-4 flex-wrap">
-          <Button href="/kontakt" variant="secondary" size="large">
-            Kontakt aufnehmen
-          </Button>
-        </div>
-      </Section>
+      <Products />
+      {contacts.length > 0 && <About contacts={contacts} />}
+      <CTA text={ctaText} />
+      <Contact />
     </main>
-  );
+  )
 }

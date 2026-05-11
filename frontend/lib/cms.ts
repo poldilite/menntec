@@ -1,76 +1,107 @@
-const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000';
+// Internal URL for server-side fetches (Docker service name)
+const CMS_INTERNAL_URL = process.env.CMS_INTERNAL_URL || process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3002'
 
 interface CacheOptions {
-  revalidate?: number;
+  revalidate?: number
 }
-
-const defaultCache: CacheOptions = {
-  revalidate: 60,
-};
 
 async function fetchCMS<T>(
   endpoint: string,
   options?: RequestInit & CacheOptions
 ): Promise<T> {
-  const { revalidate, ...fetchOptions } = options || {};
+  const { revalidate, ...fetchOptions } = options || {}
 
-  const url = `${CMS_URL}/api${endpoint}`;
+  const url = `${CMS_INTERNAL_URL}/api${endpoint}`
 
   try {
     const response = await fetch(url, {
       ...fetchOptions,
       next: {
-        revalidate: revalidate || defaultCache.revalidate,
+        revalidate: revalidate ?? 60,
       },
-    });
+    })
 
     if (!response.ok) {
-      throw new Error(`CMS API error: ${response.status}`);
+      throw new Error(`CMS API error: ${response.status} – ${url}`)
     }
 
-    return response.json();
+    return response.json()
   } catch (error) {
-    console.error(`Failed to fetch from ${url}:`, error);
-    throw error;
+    console.error(`Failed to fetch from ${url}:`, error)
+    throw error
   }
 }
 
+// ─── Globals ─────────────────────────────────────────────────────────────────
+
 export async function fetchHomepage() {
-  return fetchCMS('/collections/homepages?limit=1&where[active][equals]=true');
+  return fetchCMS<{
+    heroText: string
+    quoteText: string
+    ctaText: string
+  }>('/globals/homepage')
 }
 
+export interface CompanyInfo {
+  companyName: string
+  legalForm?: string
+  street: string
+  zip: string
+  city: string
+  email: string
+  phone?: string
+  geschaeftsfuehrer?: string
+  handelsregisterGericht?: string
+  handelsregisterNr?: string
+  ustIdNr?: string
+  datenschutzContact?: {
+    firstName: string
+    lastName: string
+    email: string
+  }
+}
+
+export async function fetchCompanyInfo(): Promise<CompanyInfo> {
+  return fetchCMS<CompanyInfo>('/globals/company-info?depth=1')
+}
+
+export async function fetchJobsPage() {
+  return fetchCMS<{
+    heroTitle: string
+  }>('/globals/jobs-page')
+}
+
+// ─── Collections ─────────────────────────────────────────────────────────────
+
 export async function fetchServices() {
-  return fetchCMS('/collections/services?limit=100&sort=-createdAt');
+  return fetchCMS<{ docs: any[] }>('/services?limit=100&sort=sortOrder&depth=1')
 }
 
 export async function fetchContacts() {
-  return fetchCMS('/collections/contacts?limit=100&sort=lastName');
+  return fetchCMS<{ docs: any[] }>('/contacts?limit=100&sort=lastName&depth=1')
 }
 
 export async function fetchJobAds() {
-  return fetchCMS('/collections/jobAds?limit=100&sort=-createdAt');
+  return fetchCMS<{ docs: any[] }>('/job-ads?limit=100&sort=-createdAt')
 }
 
 export async function fetchPageBySlug(slug: string) {
-  return fetchCMS(`/collections/pages?where[slug][equals]=${slug}`);
-}
-
-export async function fetchContactInquiries() {
-  return fetchCMS('/collections/contactInquiries?limit=100&sort=-createdAt');
+  return fetchCMS<{ docs: any[] }>(`/pages?where[slug][equals]=${encodeURIComponent(slug)}`)
 }
 
 export async function submitContactForm(data: {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string;
-  message: string;
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string
+  message: string
 }) {
-  return fetchCMS('/collections/contactInquiries', {
+  return fetchCMS('/contact-inquiries', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
-  });
+    revalidate: 0,
+  })
 }

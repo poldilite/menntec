@@ -2,9 +2,8 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -14,8 +13,11 @@ const config: Config = {
         accent: '#E95814',
         tertiary: '#D0D1D2',
         text: '#2c2c2c',
+        'text-light': '#ffffff',
+        'text-gray': '#707070',
         'footer-light': '#414041',
         'footer-dark': '#383738',
+        nav: 'rgba(30, 30, 30, 0.75)',
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
@@ -31,6 +33,9 @@ const config: Config = {
       },
       boxShadow: {
         default: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+      },
+      spacing: {
+        15: '3.75rem',
       },
       screens: {
         'phone-only': { max: '599px' },
