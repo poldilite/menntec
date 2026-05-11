@@ -46,6 +46,7 @@
     "payload.config.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "seed-*.ts"
   ]
 }
