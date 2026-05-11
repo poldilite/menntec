@@ -1,10 +1,13 @@
-import { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload';
 
 export const JobAdsCollection: CollectionConfig = {
   slug: 'job-ads',
   labels: {
     singular: 'Job Ad',
     plural: 'Job Ads',
+  },
+  access: {
+    read: () => true,
   },
   admin: {
     group: 'Content',

@@ -1,10 +1,13 @@
-import { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload';
 
 export const ServicesCollection: CollectionConfig = {
   slug: 'services',
   labels: {
     singular: 'Service',
     plural: 'Services',
+  },
+  access: {
+    read: () => true,
   },
   admin: {
     group: 'Content',
@@ -40,6 +43,14 @@ export const ServicesCollection: CollectionConfig = {
       defaultValue: false,
       admin: {
         description: 'Show "Exclusive" badge',
+      },
+    },
+    {
+      name: 'sortOrder',
+      type: 'number',
+      defaultValue: 0,
+      admin: {
+        description: 'Reihenfolge der Anzeige (aufsteigend, 0 = zuerst)',
       },
     },
   ],

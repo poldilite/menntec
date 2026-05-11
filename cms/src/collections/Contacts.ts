@@ -1,10 +1,13 @@
-import { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload';
 
 export const ContactsCollection: CollectionConfig = {
   slug: 'contacts',
   labels: {
     singular: 'Contact',
     plural: 'Contacts',
+  },
+  access: {
+    read: () => true,
   },
   admin: {
     group: 'Content',
@@ -41,6 +44,13 @@ export const ContactsCollection: CollectionConfig = {
       type: 'text',
       admin: {
         description: 'XING profile URL',
+      },
+    },
+    {
+      name: 'linkedin',
+      type: 'text',
+      admin: {
+        description: 'LinkedIn profile URL',
       },
     },
     {

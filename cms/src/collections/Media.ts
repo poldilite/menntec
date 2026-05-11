@@ -1,11 +1,17 @@
-import { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const MediaCollection: CollectionConfig = {
   slug: 'media',
   labels: {
     singular: 'Media',
     plural: 'Media',
+  },
+  access: {
+    read: () => true,
   },
   upload: {
     staticDir: path.resolve(__dirname, '../../public/uploads'),

@@ -1,10 +1,13 @@
-import { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload';
 
 export const PagesCollection: CollectionConfig = {
   slug: 'pages',
   labels: {
     singular: 'Page',
     plural: 'Pages',
+  },
+  access: {
+    read: () => true,
   },
   admin: {
     group: 'Content',
@@ -35,6 +38,14 @@ export const PagesCollection: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: true,
+      admin: {
+        description:
+          'Verfügbare Variablen (werden beim Rendern durch Firmendaten ersetzt): ' +
+          '{{companyName}}, {{legalForm}}, {{street}}, {{zip}}, {{city}}, ' +
+          '{{email}}, {{phone}}, {{geschaeftsfuehrer}}, ' +
+          '{{ustIdNr}}, {{handelsregisterGericht}}, {{handelsregisterNr}}, ' +
+          '{{dsName}}, {{dsEmail}}',
+      },
     },
   ],
 };
