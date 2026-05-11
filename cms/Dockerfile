@@ -13,8 +13,11 @@ COPY . .
 # Ensure uploads directory exists
 RUN mkdir -p public/uploads
 
-# Generate Payload importMap before build
-# Dummy env vars needed so the config can be loaded without a real DB
+# Payload reads importMap files before writing — create empty placeholders first
+RUN printf 'export const importMap = {}\n' > 'src/app/(payload)/admin/importMap.js' && \
+    printf 'export const importMap = {}\n' > 'src/app/(payload)/importMap.js'
+
+# Generate Payload importMap (overwrites placeholders with real content)
 RUN DATABASE_URI=postgresql://dummy:dummy@localhost:5432/dummy \
     PAYLOAD_SECRET=dummy-build-secret-minimum-32-characters \
     npm run payload generate:importmap
