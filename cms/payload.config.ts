@@ -78,9 +78,22 @@ export default buildConfig({
     },
   }),
   sharp,
-  cors: ['http://localhost:3002', 'http://localhost:3003', 'http://cms:3000', 'http://frontend:3001'],
-  csrf: ['http://localhost:3002', 'http://localhost:3003', 'http://cms:3000', 'http://frontend:3001'],
-  upload: {
-    staticDir: path.resolve(dirname, '../public/uploads'),
-  },
+  cors: [
+    'http://localhost:3002',
+    'http://localhost:3003',
+    'http://cms:3000',
+    'http://frontend:3001',
+    'https://menntec.de',
+    'https://www.menntec.de',
+    'https://cms.menntec.de',
+  ],
+  csrf: [
+    'http://localhost:3002',
+    'http://localhost:3003',
+    'http://cms:3000',
+    'http://frontend:3001',
+    'https://menntec.de',
+    'https://www.menntec.de',
+    'https://cms.menntec.de',
+  ],
 })
