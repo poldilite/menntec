@@ -17,6 +17,7 @@ import { Users } from './src/collections/Users'
 // Globals
 import { HomepageGlobal } from './src/globals/Homepage'
 import { CompanyInfoGlobal } from './src/globals/CompanyInfo'
+import { JobsPageGlobal } from './src/globals/JobsPage'
 
 import dotenv from 'dotenv'
 
@@ -66,6 +67,7 @@ export default buildConfig({
   globals: [
     HomepageGlobal,
     CompanyInfoGlobal,
+    JobsPageGlobal,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'dev-secret-key-minimum-32-characters-long',
@@ -78,9 +80,22 @@ export default buildConfig({
     },
   }),
   sharp,
-  cors: ['http://localhost:3002', 'http://localhost:3003', 'http://cms:3000', 'http://frontend:3001'],
-  csrf: ['http://localhost:3002', 'http://localhost:3003', 'http://cms:3000', 'http://frontend:3001'],
-  upload: {
-    staticDir: path.resolve(dirname, '../public/uploads'),
-  },
+  cors: [
+    'http://localhost:3002',
+    'http://localhost:3003',
+    'http://cms:3000',
+    'http://frontend:3001',
+    'https://menntec.de',
+    'https://www.menntec.de',
+    'https://cms.menntec.de',
+  ],
+  csrf: [
+    'http://localhost:3002',
+    'http://localhost:3003',
+    'http://cms:3000',
+    'http://frontend:3001',
+    'https://menntec.de',
+    'https://www.menntec.de',
+    'https://cms.menntec.de',
+  ],
 })
